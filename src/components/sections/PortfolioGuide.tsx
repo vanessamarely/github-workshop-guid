@@ -71,9 +71,43 @@ export function PortfolioGuide() {
 }
 
 :root {
-    --primary: #0D74FF;
-    --dark: #24292e;
-    --light: #f6f8fa;
+    /* Paleta moderna en tendencia - Elige una de estas opciones */
+    
+    /* Opción 1: Sunset/Warm (Naranja y Rosa) */
+    --primary: #FF6B6B;
+    --secondary: #FFA94D;
+    --accent: #FFD93D;
+    --dark: #2C3E50;
+    --light: #FFF8F0;
+    
+    /* Opción 2: Ocean/Cool (Azul y Verde) */
+    /* --primary: #00D4FF;
+    --secondary: #0096FF;
+    --accent: #00FFB9;
+    --dark: #1A1F36;
+    --light: #F0FAFF; */
+    
+    /* Opción 3: Forest/Natural (Verde y Tierra) */
+    /* --primary: #2ECC71;
+    --secondary: #27AE60;
+    --accent: #F39C12;
+    --dark: #1E2A2F;
+    --light: #F4F9F4; */
+    
+    /* Opción 4: Cyberpunk (Púrpura y Cyan) */
+    /* --primary: #BD00FF;
+    --secondary: #00F0FF;
+    --accent: #FF006E;
+    --dark: #0A0E27;
+    --light: #F5F0FF; */
+    
+    /* Opción 5: Minimal Monochrome (Negro y Grises) */
+    /* --primary: #000000;
+    --secondary: #333333;
+    --accent: #FF3366;
+    --dark: #1A1A1A;
+    --light: #F8F8F8; */
+    
     --white: #ffffff;
 }
 
@@ -81,15 +115,17 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     line-height: 1.6;
     color: var(--dark);
+    background: var(--white);
 }
 
 header {
     background: var(--white);
     padding: 1rem 2rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     position: sticky;
     top: 0;
     z-index: 100;
+    backdrop-filter: blur(10px);
 }
 
 nav {
@@ -126,28 +162,34 @@ section {
 #hero {
     text-align: center;
     padding: 6rem 2rem;
-    background: var(--light);
+    background: linear-gradient(135deg, var(--light) 0%, var(--white) 100%);
 }
 
 #hero h2 {
     font-size: 3rem;
     margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .cta-button {
     display: inline-block;
     padding: 1rem 2rem;
-    background: var(--primary);
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
     color: var(--white);
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 12px;
     font-weight: 600;
     margin-top: 2rem;
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
 .cta-button:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
 }
 
 /* Añade más estilos según necesites */`
@@ -267,19 +309,80 @@ section {
           </div>
         </StepCard>
 
-        <StepCard number={5} title="Añadir estilos con colores GitHub">
-          <p className="mb-3 text-sm">Usa esta paleta base en tu CSS:</p>
+        <StepCard number={5} title="Añadir estilos con colores modernos">
+          <p className="mb-3 text-sm">Usa una paleta de colores moderna y en tendencia. Aquí tienes 5 opciones para elegir:</p>
           <div className="bg-muted p-4 rounded mb-3">
             <div className="flex justify-between items-center mb-2">
-              <span className="text-xs font-semibold">styles.css - Variables de color</span>
+              <span className="text-xs font-semibold">styles.css - Paletas de color en tendencia</span>
               <CopyButton text={starterCSS} label="Copiar base CSS" />
             </div>
-            <pre className="text-xs overflow-x-auto max-h-48">
+            <pre className="text-xs overflow-x-auto max-h-64">
               {starterCSS}
             </pre>
           </div>
+          <div className="space-y-2 mb-4">
+            <Card className="p-3 border-l-4" style={{borderLeftColor: '#FF6B6B'}}>
+              <div className="flex items-center gap-2 mb-1">
+                <div className="flex gap-1">
+                  <div className="w-6 h-6 rounded" style={{background: '#FF6B6B'}}></div>
+                  <div className="w-6 h-6 rounded" style={{background: '#FFA94D'}}></div>
+                  <div className="w-6 h-6 rounded" style={{background: '#FFD93D'}}></div>
+                </div>
+                <span className="text-sm font-semibold">Sunset/Warm</span>
+              </div>
+              <p className="text-xs text-muted-foreground">Cálido, acogedor, perfecto para diseño/creatividad</p>
+            </Card>
+            
+            <Card className="p-3 border-l-4" style={{borderLeftColor: '#00D4FF'}}>
+              <div className="flex items-center gap-2 mb-1">
+                <div className="flex gap-1">
+                  <div className="w-6 h-6 rounded" style={{background: '#00D4FF'}}></div>
+                  <div className="w-6 h-6 rounded" style={{background: '#0096FF'}}></div>
+                  <div className="w-6 h-6 rounded" style={{background: '#00FFB9'}}></div>
+                </div>
+                <span className="text-sm font-semibold">Ocean/Cool</span>
+              </div>
+              <p className="text-xs text-muted-foreground">Fresco, tecnológico, ideal para desarrollo/tech</p>
+            </Card>
+            
+            <Card className="p-3 border-l-4" style={{borderLeftColor: '#2ECC71'}}>
+              <div className="flex items-center gap-2 mb-1">
+                <div className="flex gap-1">
+                  <div className="w-6 h-6 rounded" style={{background: '#2ECC71'}}></div>
+                  <div className="w-6 h-6 rounded" style={{background: '#27AE60'}}></div>
+                  <div className="w-6 h-6 rounded" style={{background: '#F39C12'}}></div>
+                </div>
+                <span className="text-sm font-semibold">Forest/Natural</span>
+              </div>
+              <p className="text-xs text-muted-foreground">Natural, confiable, excelente para sustentabilidad/ciencia</p>
+            </Card>
+            
+            <Card className="p-3 border-l-4" style={{borderLeftColor: '#BD00FF'}}>
+              <div className="flex items-center gap-2 mb-1">
+                <div className="flex gap-1">
+                  <div className="w-6 h-6 rounded" style={{background: '#BD00FF'}}></div>
+                  <div className="w-6 h-6 rounded" style={{background: '#00F0FF'}}></div>
+                  <div className="w-6 h-6 rounded" style={{background: '#FF006E'}}></div>
+                </div>
+                <span className="text-sm font-semibold">Cyberpunk</span>
+              </div>
+              <p className="text-xs text-muted-foreground">Audaz, futurista, llamativo para gaming/arte digital</p>
+            </Card>
+            
+            <Card className="p-3 border-l-4" style={{borderLeftColor: '#000000'}}>
+              <div className="flex items-center gap-2 mb-1">
+                <div className="flex gap-1">
+                  <div className="w-6 h-6 rounded border" style={{background: '#000000'}}></div>
+                  <div className="w-6 h-6 rounded border" style={{background: '#333333'}}></div>
+                  <div className="w-6 h-6 rounded" style={{background: '#FF3366'}}></div>
+                </div>
+                <span className="text-sm font-semibold">Minimal Monochrome</span>
+              </div>
+              <p className="text-xs text-muted-foreground">Elegante, profesional, perfecto para portafolios minimalistas</p>
+            </Card>
+          </div>
           <Card className="p-3 bg-primary/10 text-sm">
-            <strong>Prompt para Copilot:</strong> "Completa este CSS para que el sitio se vea moderno, minimalista y responsive. Añade animaciones sutiles en hover y transiciones suaves."
+            <strong>Prompt para Copilot:</strong> "Usando la paleta de colores [nombre de paleta], completa este CSS para que el sitio se vea moderno y responsive. Añade gradientes sutiles, sombras suaves y animaciones en hover."
           </Card>
         </StepCard>
 
@@ -363,7 +466,7 @@ section {
           <div className="flex gap-2"><span className="text-primary">☐</span><span>Formulario de contacto funcional</span></div>
           <div className="flex gap-2"><span className="text-primary">☐</span><span>Footer con links a redes sociales</span></div>
           <div className="flex gap-2"><span className="text-primary">☐</span><span>100% responsive (mobile, tablet, desktop)</span></div>
-          <div className="flex gap-2"><span className="text-primary">☐</span><span>Colores consistentes (paleta GitHub)</span></div>
+          <div className="flex gap-2"><span className="text-primary">☐</span><span>Paleta de colores moderna y consistente</span></div>
           <div className="flex gap-2"><span className="text-primary">☐</span><span>Transiciones y hover effects sutiles</span></div>
           <div className="flex gap-2"><span className="text-primary">☐</span><span>Accesibilidad básica (alt text, labels)</span></div>
           <div className="flex gap-2"><span className="text-primary">☐</span><span>Publicado en GitHub Pages</span></div>

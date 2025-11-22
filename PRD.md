@@ -93,24 +93,24 @@ Esta aplicación requiere navegación multinivel, gestión de estado para progre
 
 ## Design Direction
 
-El diseño debe evocar la identidad visual de GitHub manteniendo accesibilidad y calidez - profesional pero nunca intimidante, técnico pero siempre claro, con una estética que inspira confianza y pertenencia al ecosistema tech de GitHub.
+El diseño debe evocar la identidad visual moderna de GitHub Copilot con su característico púrpura/violeta - tecnológico pero accesible, innovador pero nunca intimidante, con una estética que inspira creatividad y pertenencia al futuro del desarrollo con IA.
 
 ## Color Selection
 
-Analogous con complemento de acento - Los grises de GitHub crean la base neutral profesional, mientras el azul Copilot actúa como color de acción y foco.
+Analogous con complemento de acento - Los tonos púrpura/violeta de GitHub Copilot crean una identidad visual moderna e innovadora que representa la inteligencia artificial y el futuro del desarrollo.
 
-- **Primary Color**: Azul Copilot (oklch(0.55 0.24 250)) - Representa innovación, tecnología e inteligencia artificial; usado para CTAs, links y elementos interactivos principales
+- **Primary Color**: Púrpura Copilot (oklch(0.55 0.22 285)) - Representa innovación, tecnología e inteligencia artificial; usado para CTAs, links y elementos interactivos principales
 - **Secondary Colors**: 
-  - Gris Oscuro GitHub (oklch(0.18 0 0)) - Para texto principal y headers, transmite profesionalismo
-  - Gris Claro GitHub (oklch(0.97 0 0)) - Para backgrounds y cards, crea jerarquía visual suave
-- **Accent Color**: Negro puro (oklch(0 0 0)) - Para máximo contraste en títulos principales y elementos que requieren máxima atención
+  - Púrpura Oscuro (oklch(0.45 0.18 285)) - Para contraste secundario y elementos hover
+  - Lavanda Claro (oklch(0.96 0.01 285)) - Para backgrounds suaves y cards, mantiene la identidad de marca
+- **Accent Color**: Magenta Vibrante (oklch(0.65 0.25 300)) - Para highlights, animaciones y elementos que requieren máxima atención
 - **Foreground/Background Pairings**:
-  - Background principal (Blanco oklch(1 0 0)): Gris oscuro text (oklch(0.18 0 0)) - Ratio 12.1:1 ✓
-  - Card (Gris claro oklch(0.97 0 0)): Gris oscuro text (oklch(0.18 0 0)) - Ratio 11.2:1 ✓
-  - Primary/Azul Copilot (oklch(0.55 0.24 250)): White text (oklch(1 0 0)) - Ratio 5.8:1 ✓
-  - Secondary/Gris oscuro (oklch(0.18 0 0)): White text (oklch(1 0 0)) - Ratio 12.1:1 ✓
-  - Accent/Negro (oklch(0 0 0)): White text (oklch(1 0 0)) - Ratio 21:1 ✓
-  - Muted (oklch(0.94 0 0)): Gris medio text (oklch(0.45 0 0)) - Ratio 7.2:1 ✓
+  - Background principal (Blanco casi puro oklch(0.99 0 0)): Negro text (oklch(0.15 0 0)) - Ratio 16.2:1 ✓
+  - Card (Blanco puro oklch(1 0 0)): Negro text (oklch(0.15 0 0)) - Ratio 17:1 ✓
+  - Primary/Púrpura Copilot (oklch(0.55 0.22 285)): White text (oklch(1 0 0)) - Ratio 5.2:1 ✓
+  - Secondary/Púrpura oscuro (oklch(0.45 0.18 285)): White text (oklch(1 0 0)) - Ratio 7.8:1 ✓
+  - Accent/Magenta (oklch(0.65 0.25 300)): White text (oklch(1 0 0)) - Ratio 4.9:1 ✓
+  - Muted (oklch(0.96 0.01 285)): Gris medio text (oklch(0.47 0 0)) - Ratio 8.5:1 ✓
 
 ## Font Selection
 
