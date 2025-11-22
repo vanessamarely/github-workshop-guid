@@ -304,12 +304,12 @@ export const copilotPlans: CopilotPlan[] = [
     name: 'GitHub Copilot Free',
     price: 'Gratis',
     features: [
-      '2,000 completaciones de código por mes',
-      '50 mensajes de chat por mes',
+      '2,000 completaciones al mes (cada vez que aceptas una sugerencia cuenta como 1)',
+      '50 mensajes de chat al mes (conversaciones completas, no caracteres)',
       'Sugerencias de código en tiempo real',
       'Soporte para múltiples lenguajes',
       'Uso en VS Code, Neovim y más',
-      'Límites mensuales renovables'
+      'Límites se reinician cada mes'
     ],
     bestFor: 'Estudiantes y personas que están comenzando a programar',
     cta: 'Ideal para este taller'

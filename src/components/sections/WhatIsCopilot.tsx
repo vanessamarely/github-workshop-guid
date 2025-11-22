@@ -1,6 +1,6 @@
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Lightning, ChatCircle, Code, MagicWand, Sparkle, GraduationCap } from '@phosphor-icons/react'
+import { Lightning, ChatCircle, Code, MagicWand, Sparkle, GraduationCap, Lightbulb } from '@phosphor-icons/react'
 import { copilotPlans } from '@/lib/data'
 
 export function WhatIsCopilot() {
@@ -119,6 +119,35 @@ export function WhatIsCopilot() {
 
       <div>
         <h2 className="text-2xl font-semibold mb-6">Planes de GitHub Copilot</h2>
+        
+        <Card className="p-6 mb-6 bg-accent/10 border-accent/30">
+          <h3 className="font-semibold text-lg mb-3 flex items-center gap-2">
+            <Lightbulb size={24} weight="duotone" className="text-primary" />
+            ¿Qué significan los límites del plan gratuito?
+          </h3>
+          <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
+            <div>
+              <p className="font-semibold text-foreground mb-1">🔹 2,000 completaciones de código</p>
+              <p>
+                Cada vez que Copilot te sugiere código y tú presionas <kbd className="px-2 py-0.5 bg-muted rounded text-xs font-mono">Tab</kbd> para aceptarlo, cuenta como 1 completación. 
+                No importa si es una línea o 50 líneas de código, es una sola completación.
+                Con 2,000 al mes tienes suficiente para programar varias horas al día.
+              </p>
+            </div>
+            <div>
+              <p className="font-semibold text-foreground mb-1">💬 50 mensajes de chat</p>
+              <p>
+                Son 50 preguntas o conversaciones que puedes tener con Copilot en el panel de chat.
+                Un "mensaje" es cada vez que tú le escribes algo y él te responde, sin importar cuántos caracteres tenga tu pregunta o su respuesta.
+                Si haces una pregunta y Copilot responde, eso es 1 mensaje usado. Puedes hacer preguntas largas y complejas sin problema.
+              </p>
+            </div>
+            <p className="text-xs pt-2 border-t">
+              💡 <strong>Tip:</strong> Los límites se reinician el primer día de cada mes. Para la mayoría de principiantes y estudiantes, estos límites son más que suficientes.
+            </p>
+          </div>
+        </Card>
+
         <div className="grid md:grid-cols-2 gap-6">
           {copilotPlans.map((plan) => (
             <Card 
