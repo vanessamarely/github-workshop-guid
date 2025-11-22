@@ -149,12 +149,12 @@ function App() {
   )
 
   return (
-    <div className="h-screen flex overflow-hidden bg-background">
-      <aside className="hidden lg:flex w-80 border-r flex-col">
+    <div className="h-screen flex bg-background">
+      <aside className="hidden lg:flex w-80 border-r flex-col h-screen sticky top-0">
         <SidebarContent />
       </aside>
 
-      <main className="flex-1 flex flex-col overflow-hidden">
+      <main className="flex-1 flex flex-col min-h-screen">
         <header className="lg:hidden border-b p-4 flex items-center justify-between bg-background sticky top-0 z-10">
           <div className="flex items-center gap-2">
             <GithubLogo size={24} weight="fill" />
@@ -172,11 +172,11 @@ function App() {
           </Sheet>
         </header>
 
-        <ScrollArea className="flex-1">
+        <div className="flex-1 overflow-y-auto">
           <div className="max-w-4xl mx-auto p-6 lg:p-12">
             <ActiveComponent />
           </div>
-        </ScrollArea>
+        </div>
       </main>
 
       <Toaster />
