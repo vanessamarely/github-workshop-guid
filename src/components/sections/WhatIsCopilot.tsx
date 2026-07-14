@@ -1,6 +1,6 @@
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Lightning, ChatCircle, Code, MagicWand, Sparkle, GraduationCap, Lightbulb } from '@phosphor-icons/react'
+import { Lightning, ChatCircle, Code, MagicWand, Sparkle, GraduationCap, Lightbulb, Terminal, Desktop, Robot } from '@phosphor-icons/react'
 import { copilotPlans } from '@/lib/data'
 
 export function WhatIsCopilot() {
@@ -114,41 +114,119 @@ export function WhatIsCopilot() {
               Copia el error que te da tu código, pégalo en el chat y Copilot te ayuda a identificar y solucionar el problema.
             </p>
           </Card>
+
+          <Card className="p-6">
+            <div className="flex gap-3 items-start mb-3">
+              <Robot size={28} weight="duotone" className="text-primary flex-shrink-0" />
+              <div>
+                <h3 className="font-semibold text-lg">Trabajar de forma autónoma (Agent Mode)</h3>
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Dale una tarea completa ("añade validación de formulario en todos los inputs") y Copilot en modo Agente
+              edita varios archivos, ejecuta comandos y corrige sus propios errores hasta terminar.
+            </p>
+          </Card>
+
+          <Card className="p-6">
+            <div className="flex gap-3 items-start mb-3">
+              <Sparkle size={28} weight="duotone" className="text-primary flex-shrink-0" />
+              <div>
+                <h3 className="font-semibold text-lg">Elegir entre varios modelos de IA</h3>
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Copilot no usa un solo modelo: puedes elegir entre Claude, Gemini o GPT según la tarea,
+              o dejar que Copilot elija automáticamente el mejor para cada caso.
+            </p>
+          </Card>
+        </div>
+      </div>
+
+      <div>
+        <h2 className="text-2xl font-semibold mb-6">¿Dónde puedes usar Copilot?</h2>
+        <p className="text-muted-foreground mb-6">
+          Copilot ya no vive solo dentro del editor de código. Hoy puedes usarlo desde varios lugares según lo que necesites hacer.
+        </p>
+        <div className="grid md:grid-cols-2 gap-4">
+          <Card className="p-6">
+            <div className="flex gap-3 items-start mb-3">
+              <Code size={28} weight="duotone" className="text-primary flex-shrink-0" />
+              <h3 className="font-semibold text-lg">En tu editor (VS Code y más)</h3>
+            </div>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Sugerencias mientras escribes, chat, Edit Mode y Agent Mode integrados directamente en tu editor.
+              Es la forma más común de empezar. Ver sección "VS Code + Copilot".
+            </p>
+          </Card>
+          <Card className="p-6">
+            <div className="flex gap-3 items-start mb-3">
+              <Terminal size={28} weight="duotone" className="text-primary flex-shrink-0" />
+              <h3 className="font-semibold text-lg">En la terminal (Copilot CLI)</h3>
+            </div>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Un agente de IA que vive en tu línea de comandos: le pides tareas en lenguaje natural y él edita
+              archivos, corre comandos y te ayuda con Git y GitHub. Ver sección "Copilot CLI".
+            </p>
+          </Card>
+          <Card className="p-6">
+            <div className="flex gap-3 items-start mb-3">
+              <Desktop size={28} weight="duotone" className="text-primary flex-shrink-0" />
+              <h3 className="font-semibold text-lg">En la app de escritorio</h3>
+            </div>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Una aplicación independiente (Windows, Mac, Linux) para supervisar varios agentes de Copilot
+              trabajando en paralelo en distintos repositorios. Ver sección "Copilot Desktop".
+            </p>
+          </Card>
+          <Card className="p-6">
+            <div className="flex gap-3 items-start mb-3">
+              <ChatCircle size={28} weight="duotone" className="text-primary flex-shrink-0" />
+              <h3 className="font-semibold text-lg">En github.com y el móvil</h3>
+            </div>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Chatea con Copilot directamente desde cualquier página de GitHub.com, o desde la app móvil de GitHub,
+              sin necesidad de tener un proyecto abierto.
+            </p>
+          </Card>
         </div>
       </div>
 
       <div>
         <h2 className="text-2xl font-semibold mb-6">Planes de GitHub Copilot</h2>
-        
+
         <Card className="p-6 mb-6 bg-accent/10 border-accent/30">
           <h3 className="font-semibold text-lg mb-3 flex items-center gap-2">
             <Lightbulb size={24} weight="duotone" className="text-primary" />
-            ¿Qué significan los límites del plan gratuito?
+            ¿Cómo funcionan los límites hoy? (créditos de IA)
           </h3>
           <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
             <div>
-              <p className="font-semibold text-foreground mb-1">🔹 2,000 completaciones de código</p>
+              <p className="font-semibold text-foreground mb-1">🔹 Completaciones de código: siempre incluidas</p>
               <p>
-                Cada vez que Copilot te sugiere código y tú presionas <kbd className="px-2 py-0.5 bg-muted rounded text-xs font-mono">Tab</kbd> para aceptarlo, cuenta como 1 completación. 
-                No importa si es una línea o 50 líneas de código, es una sola completación.
-                Con 2,000 al mes tienes suficiente para programar varias horas al día.
+                Las sugerencias de código en línea (autocompletado) y las "Next Edit Suggestions" que aparecen
+                mientras escribes <strong>no consumen créditos</strong> en ningún plan, incluido el gratuito.
+                Puedes programar todo el día apoyándote en estas sugerencias sin preocuparte por límites.
               </p>
             </div>
             <div>
-              <p className="font-semibold text-foreground mb-1">💬 50 mensajes de chat</p>
+              <p className="font-semibold text-foreground mb-1">💬 Chat, Agent Mode y Coding Agent: consumen créditos IA</p>
               <p>
-                Son 50 preguntas o conversaciones que puedes tener con Copilot en el panel de chat.
-                Un "mensaje" es cada vez que tú le escribes algo y él te responde, sin importar cuántos caracteres tenga tu pregunta o su respuesta.
-                Si haces una pregunta y Copilot responde, eso es 1 mensaje usado. Puedes hacer preguntas largas y complejas sin problema.
+                Desde junio de 2026, cada plan incluye una bolsa mensual de <strong>créditos de IA</strong> que se gasta
+                según el uso real de tokens al chatear, usar Agent Mode o delegar tareas al Coding Agent.
+                Los modelos más potentes (como los más avanzados de Claude o GPT) consumen más créditos que los modelos base.
+                El plan Free incluye una asignación limitada de créditos con selección automática de modelo.
               </p>
             </div>
             <p className="text-xs pt-2 border-t">
-              💡 <strong>Tip:</strong> Los límites se reinician el primer día de cada mes. Para la mayoría de principiantes y estudiantes, estos límites son más que suficientes.
+              💡 <strong>Tip:</strong> Los créditos se reinician cada mes. Para la mayoría de principiantes, la asignación gratuita
+              alcanza perfectamente para aprender y completar este taller; si se agotan, siempre puedes seguir usando
+              completaciones de código sin límite.
             </p>
           </div>
         </Card>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {copilotPlans.map((plan) => (
             <Card 
               key={plan.name} 

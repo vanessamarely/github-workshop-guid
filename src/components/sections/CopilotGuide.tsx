@@ -1,6 +1,6 @@
 import { Card } from '@/components/ui/card'
 import { StepCard } from '../StepCard'
-import { Lightbulb, Warning, CheckCircle } from '@phosphor-icons/react'
+import { Lightbulb, Warning, CheckCircle, Robot } from '@phosphor-icons/react'
 
 export function CopilotGuide() {
   return (
@@ -90,6 +90,54 @@ export function CopilotGuide() {
             </div>
           </StepCard>
         </div>
+      </div>
+
+      <div>
+        <h2 className="text-2xl font-semibold mb-6">Elige el modo correcto para cada tarea</h2>
+        <Card className="p-6 mb-4 bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20">
+          <div className="flex gap-3 items-start mb-4">
+            <Robot size={28} weight="duotone" className="text-primary flex-shrink-0" />
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Copilot Chat ya no es solo "preguntar y recibir código". Hoy tiene varios modos, y elegir el correcto
+              te ahorra tiempo y créditos.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-4 text-sm">
+            <div className="bg-background/60 p-4 rounded border">
+              <div className="font-semibold mb-1">💬 Ask (Preguntar)</div>
+              <p className="text-muted-foreground">Para entender código, resolver dudas o pedir explicaciones. No modifica archivos.</p>
+            </div>
+            <div className="bg-background/60 p-4 rounded border">
+              <div className="font-semibold mb-1">✏️ Edit</div>
+              <p className="text-muted-foreground">Para cambios puntuales en uno o varios archivos que ya tienes abiertos. Tú revisas cada cambio.</p>
+            </div>
+            <div className="bg-background/60 p-4 rounded border">
+              <div className="font-semibold mb-1">🤖 Agent</div>
+              <p className="text-muted-foreground">Para tareas completas de varios pasos: Copilot decide qué archivos tocar, ejecuta comandos y corrige errores solo.</p>
+            </div>
+          </div>
+        </Card>
+
+        <StepCard number={6} title="Dale contexto permanente con instrucciones personalizadas">
+          <p className="mb-3">
+            Puedes crear un archivo <code className="bg-muted px-2 py-1 rounded">.github/copilot-instructions.md</code> en
+            tu repositorio con reglas del proyecto (convenciones de nombres, stack usado, qué evitar). Copilot lo lee
+            automáticamente en cada conversación, así no repites el mismo contexto una y otra vez.
+          </p>
+          <div className="bg-muted p-4 rounded font-mono text-xs">
+            # .github/copilot-instructions.md<br />
+            Este proyecto usa React + TypeScript + Tailwind.<br />
+            Los componentes van en src/components. Usa nombres en inglés para variables.
+          </div>
+        </StepCard>
+
+        <StepCard number={7} title="Elige el modelo según la tarea">
+          <p>
+            Desde el selector de modelo en el chat puedes cambiar entre Claude, Gemini o GPT (o dejar la selección
+            automática). Para dudas rápidas o completaciones, el modelo automático es suficiente; para tareas
+            complejas de arquitectura o refactors grandes, prueba un modelo más avanzado.
+          </p>
+        </StepCard>
       </div>
 
       <div>

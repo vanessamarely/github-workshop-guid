@@ -1,5 +1,5 @@
 import { Card } from '@/components/ui/card'
-import { Code, Cloud, GraduationCap, House, Lightning, Wrench } from '@phosphor-icons/react'
+import { Code, Cloud, GraduationCap, House, Lightning, Wrench, Terminal, Desktop } from '@phosphor-icons/react'
 
 export function GitHubEcosystem() {
   return (
@@ -158,8 +158,43 @@ export function GitHubEcosystem() {
                   Empieza proyectos desde plantillas pre-configuradas.
                 </p>
                 <div className="bg-muted p-3 rounded text-sm">
-                  <strong>Cómo usarlo:</strong> Al crear un nuevo repo, busca "Choose a template" 
+                  <strong>Cómo usarlo:</strong> Al crear un nuevo repo, busca "Choose a template"
                   y selecciona entre miles de templates para React, portfolios, landing pages, y más.
+                </div>
+              </div>
+            </div>
+          </Card>
+
+          <Card className="p-6">
+            <div className="flex gap-4 items-start">
+              <div className="p-3 bg-primary/10 rounded-lg">
+                <Terminal size={32} weight="duotone" className="text-primary" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-semibold text-lg mb-2">GitHub Copilot CLI</h3>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Copilot como agente de terminal: le pides tareas en lenguaje natural y él ejecuta comandos por ti.
+                </p>
+                <div className="bg-muted p-3 rounded text-sm">
+                  <strong>Cómo usarlo:</strong> Instálalo con <code className="bg-background px-1 rounded">npm install -g @github/copilot</code> y
+                  ejecuta <code className="bg-background px-1 rounded">copilot</code> en cualquier proyecto. Ver sección "Copilot CLI".
+                </div>
+              </div>
+            </div>
+          </Card>
+
+          <Card className="p-6">
+            <div className="flex gap-4 items-start">
+              <div className="p-3 bg-primary/10 rounded-lg">
+                <Desktop size={32} weight="duotone" className="text-primary" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-semibold text-lg mb-2">GitHub Copilot App (Escritorio)</h3>
+                <p className="text-sm text-muted-foreground mb-3">
+                  App independiente para Windows, Mac y Linux que permite supervisar varios agentes de Copilot en paralelo.
+                </p>
+                <div className="bg-muted p-3 rounded text-sm">
+                  <strong>Ideal para:</strong> gestionar varias tareas o proyectos a la vez desde una sola vista. Ver sección "Copilot Desktop".
                 </div>
               </div>
             </div>

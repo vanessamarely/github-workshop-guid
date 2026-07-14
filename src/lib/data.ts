@@ -304,39 +304,47 @@ export const copilotPlans: CopilotPlan[] = [
     name: 'GitHub Copilot Free',
     price: 'Gratis',
     features: [
-      '2,000 completaciones al mes (cada vez que aceptas una sugerencia cuenta como 1)',
-      '50 mensajes de chat al mes (conversaciones completas, no caracteres)',
-      'Sugerencias de código en tiempo real',
-      'Soporte para múltiples lenguajes',
-      'Uso en VS Code, Neovim y más',
-      'Límites se reinician cada mes'
+      'Completaciones de código y Next Edit Suggestions (no consumen créditos)',
+      'Chat y Agent Mode con selección automática de modelo',
+      'Uso limitado de modelos premium (Claude, Gemini, GPT) vía créditos IA',
+      'Disponible en VS Code, Visual Studio, JetBrains, Neovim, github.com y más',
+      'Sin tarjeta de crédito, solo necesitas una cuenta de GitHub'
     ],
     bestFor: 'Estudiantes y personas que están comenzando a programar',
     cta: 'Ideal para este taller'
   },
   {
-    name: 'Copilot Individual',
+    name: 'Copilot Pro',
     price: '$10/mes o $100/año',
     features: [
       'Completaciones ilimitadas de código',
-      'Chat ilimitado con Copilot',
-      'Sugerencias avanzadas multi-línea',
-      'Soporte prioritario',
-      'Acceso a modelos más avanzados',
-      'Sin límites mensuales'
+      'Créditos IA mensuales para chat y Agent Mode',
+      'Acceso a múltiples modelos (Claude, Gemini, GPT)',
+      'Copilot coding agent (delega tareas que abren su propio PR)',
+      'Acceso a GitHub Copilot CLI y a la app de escritorio'
     ],
-    bestFor: 'Desarrolladores profesionales freelance o que trabajan de forma independiente'
+    bestFor: 'Personas aprendiendo o programando de forma independiente'
   },
   {
-    name: 'Copilot for Students',
+    name: 'Copilot Pro+',
+    price: '$39/mes o $390/año',
+    features: [
+      'Todo lo de Pro, con mayor asignación mensual de créditos IA',
+      'Acceso a los modelos más avanzados (ej. variantes de Claude Opus)',
+      'Modo rápido ("fast mode") en algunos modelos',
+      'Ideal para quienes usan Copilot intensivamente todos los días'
+    ],
+    bestFor: 'Desarrolladores freelance con uso muy intensivo de IA'
+  },
+  {
+    name: 'GitHub Copilot for Students',
     price: 'Gratis (verificación requerida)',
     features: [
-      'Todo lo de Copilot Individual',
-      'Acceso completo sin restricciones',
+      'Equivalente a Copilot Pro sin costo',
       'Requiere GitHub Student Developer Pack',
-      'Verificación de estatus estudiantil',
-      'Acceso mientras seas estudiante',
-      'Incluye otros beneficios de Student Pack'
+      'Verificación de estatus estudiantil (correo o carnet)',
+      'Acceso mientras mantengas tu estatus de estudiante',
+      'Incluye otros beneficios del Student Pack (dominios, hosting, créditos cloud)'
     ],
     bestFor: 'Estudiantes universitarios verificados',
     cta: 'Solicita Student Pack'
@@ -345,12 +353,11 @@ export const copilotPlans: CopilotPlan[] = [
     name: 'Copilot Business',
     price: '$19/usuario/mes',
     features: [
-      'Todo lo de Individual',
-      'Gestión de organización',
-      'Políticas empresariales',
-      'Filtrado de código',
-      'Sin retención de datos para entrenamiento',
-      'Soporte empresarial'
+      'Todo lo de Pro para cada persona del equipo',
+      'Copilot coding agent en la nube',
+      'Gestión centralizada y políticas de organización',
+      'Bolsa de créditos IA compartida entre el equipo',
+      'Sin retención de datos del código para entrenar modelos'
     ],
     bestFor: 'Equipos y empresas'
   }

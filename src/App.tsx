@@ -5,17 +5,19 @@ import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { Toaster } from '@/components/ui/sonner'
-import { 
-  List, 
-  Book, 
-  Lightning, 
-  Lightbulb, 
-  Code, 
-  Path, 
-  FileText, 
-  House, 
-  Cloud, 
+import {
+  List,
+  Book,
+  Lightning,
+  Lightbulb,
+  Code,
+  Path,
+  FileText,
+  House,
+  Cloud,
   Wrench,
+  Terminal,
+  Desktop,
   CheckCircle,
   GithubLogo
 } from '@phosphor-icons/react'
@@ -30,6 +32,8 @@ import { ReadmeGuide } from '@/components/sections/ReadmeGuide'
 import { PortfolioGuide } from '@/components/sections/PortfolioGuide'
 import { GitHubEcosystem } from '@/components/sections/GitHubEcosystem'
 import { VSCodeSetup } from '@/components/sections/VSCodeSetup'
+import { CopilotCLI } from '@/components/sections/CopilotCLI'
+import { CopilotDesktop } from '@/components/sections/CopilotDesktop'
 
 interface SectionDef {
   id: string
@@ -48,6 +52,8 @@ const sections: SectionDef[] = [
   { id: 'portfolio', title: 'Crear Portafolio Web', icon: House, component: PortfolioGuide },
   { id: 'ecosystem', title: 'Ecosistema GitHub', icon: Cloud, component: GitHubEcosystem },
   { id: 'vscode', title: 'VS Code + Copilot', icon: Wrench, component: VSCodeSetup },
+  { id: 'copilot-cli', title: 'Copilot CLI', icon: Terminal, component: CopilotCLI },
+  { id: 'copilot-desktop', title: 'Copilot Desktop', icon: Desktop, component: CopilotDesktop },
 ]
 
 function App() {

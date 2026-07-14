@@ -184,12 +184,12 @@ export function VSCodeSetup() {
           <Card className="p-6">
             <div className="flex gap-3 items-start mb-3">
               <Lightning size={24} weight="fill" className="text-primary flex-shrink-0" />
-              <h3 className="font-semibold">Sugerencias en Línea</h3>
+              <h3 className="font-semibold">Sugerencias en Línea y Next Edit Suggestions</h3>
             </div>
             <div className="space-y-2 text-sm text-muted-foreground">
-              <p>Mientras escribes, aparecen sugerencias en gris:</p>
+              <p>Mientras escribes, aparecen sugerencias en gris. Copilot también predice tu <strong>próxima edición</strong> en otras partes del archivo:</p>
               <ul className="ml-4 space-y-1">
-                <li>• <kbd className="bg-muted px-2 py-1 rounded">Tab</kbd> - Aceptar sugerencia</li>
+                <li>• <kbd className="bg-muted px-2 py-1 rounded">Tab</kbd> - Aceptar sugerencia o saltar a la próxima edición sugerida</li>
                 <li>• <kbd className="bg-muted px-2 py-1 rounded">Esc</kbd> - Rechazar</li>
                 <li>• <kbd className="bg-muted px-2 py-1 rounded">Alt+]</kbd> - Siguiente sugerencia</li>
                 <li>• <kbd className="bg-muted px-2 py-1 rounded">Alt+[</kbd> - Anterior sugerencia</li>
@@ -205,10 +205,26 @@ export function VSCodeSetup() {
             <div className="space-y-2 text-sm text-muted-foreground">
               <p>Chatea con Copilot para preguntas o generar código:</p>
               <ul className="ml-4 space-y-1">
-                <li>• <kbd className="bg-muted px-2 py-1 rounded">Ctrl+I</kbd> - Abrir chat inline</li>
-                <li>• Click en ícono de chat en la barra lateral</li>
+                <li>• <kbd className="bg-muted px-2 py-1 rounded">Ctrl+Alt+I</kbd> (Mac: <kbd className="bg-muted px-2 py-1 rounded">Cmd+Ctrl+I</kbd>) - Abrir panel de Chat</li>
+                <li>• <kbd className="bg-muted px-2 py-1 rounded">Ctrl+I</kbd> - Chat inline sobre el código seleccionado</li>
                 <li>• Selecciona código + click derecho → "Copilot" → "Explain"</li>
-                <li>• Pregunta lo que sea en español</li>
+                <li>• Elige el modo (Ask / Edit / Agent) y el modelo desde los selectores del panel</li>
+              </ul>
+            </div>
+          </Card>
+
+          <Card className="p-6">
+            <div className="flex gap-3 items-start mb-3">
+              <Wrench size={24} weight="fill" className="text-primary flex-shrink-0" />
+              <h3 className="font-semibold">Agent Mode</h3>
+            </div>
+            <div className="space-y-2 text-sm text-muted-foreground">
+              <p>Para tareas de varios pasos, cambia el modo del chat a "Agent":</p>
+              <ul className="ml-4 space-y-1">
+                <li>• Copilot decide qué archivos editar y qué comandos correr</li>
+                <li>• Te muestra cada cambio antes de aplicarlo (puedes aceptar o deshacer)</li>
+                <li>• Usa <code className="bg-muted px-1 rounded">#file</code> o <code className="bg-muted px-1 rounded">@workspace</code> para darle contexto extra</li>
+                <li>• Ideal para "añade validación a este formulario" o "arregla este bug en todo el proyecto"</li>
               </ul>
             </div>
           </Card>
