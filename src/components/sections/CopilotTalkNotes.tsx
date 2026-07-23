@@ -1,6 +1,6 @@
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Presentation, GithubLogo, Wrench, Terminal, Desktop } from '@phosphor-icons/react'
+import { Presentation, GithubLogo, Wrench, Terminal, Desktop, ArrowSquareOut } from '@phosphor-icons/react'
 import { slides } from '@/lib/slideContent'
 import { StepCard } from '@/components/StepCard'
 
@@ -45,6 +45,13 @@ export function CopilotTalkNotes() {
           <div className="space-y-6">
             {group.items.map((slide) => (
               <div key={slide.id}>
+                {slide.photo && (
+                  <img
+                    src={slide.photo}
+                    alt={slide.title}
+                    className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-md float-right ml-4 mb-2"
+                  />
+                )}
                 <h3 className="font-semibold text-lg mb-2">{slide.title}</h3>
                 <p className="text-muted-foreground leading-relaxed mb-3">{slide.notes}</p>
                 <ul className="ml-4 space-y-1 text-sm text-muted-foreground">
@@ -52,6 +59,29 @@ export function CopilotTalkNotes() {
                     <li key={i}>• {bullet}</li>
                   ))}
                 </ul>
+                {slide.links && slide.links.length > 0 && (
+                  <div className="flex flex-wrap gap-3 mt-4 clear-right">
+                    {slide.links.map((link) => (
+                      <a
+                        key={link.url}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm text-primary font-medium border border-primary/30 rounded-full px-3 py-1 hover:bg-primary/10 transition-colors"
+                      >
+                        {link.label}
+                        <ArrowSquareOut size={14} />
+                      </a>
+                    ))}
+                  </div>
+                )}
+                {slide.image && (
+                  <img
+                    src={slide.image}
+                    alt={slide.title}
+                    className="w-full rounded-xl border mt-4 clear-right"
+                  />
+                )}
               </div>
             ))}
           </div>

@@ -9,6 +9,11 @@ export type SceneAccent =
   | 'lifecycle'
   | 'closing'
 
+export interface SlideLink {
+  label: string
+  url: string
+}
+
 export interface Slide {
   id: string
   /** Grupo temático — usado para agrupar en la guía de texto (CopilotTalkNotes) */
@@ -18,6 +23,12 @@ export interface Slide {
   /** Prosa completa para la versión de guía/lectura — más detallada que los bullets del slide */
   notes: string
   sceneAccent: SceneAccent
+  /** Ilustración en public/images/talk/ — si está presente, reemplaza el fondo de Three.js en este slide */
+  image?: string
+  /** Ruta de una foto circular (usado en el slide de perfil) */
+  photo?: string
+  /** Links sociales (usado en el slide de perfil) */
+  links?: SlideLink[]
 }
 
 export const slides: Slide[] = [
@@ -35,17 +46,37 @@ export const slides: Slide[] = [
     sceneAccent: 'intro',
   },
   {
+    id: 'profile',
+    topic: 'Quién habla',
+    title: 'Vanessa Aristizábal',
+    bullets: [
+      'Magíster en Ingeniería, especialización en Desarrollo de Software',
+      'Google Developer Expert en Angular y Tecnologías Web',
+      'GitHub Star',
+      'Creadora de contenido tech',
+    ],
+    notes:
+      'Magíster en Ingeniería, con especialización en Desarrollo de Software. Google Developer Expert en Angular y Tecnologías Web, y GitHub Star. Creadora de contenido tech. Apasionada por el código, los libros, la ilustración y el journaling.',
+    sceneAccent: 'intro',
+    photo: '/images/talk/profile.jpg',
+    links: [
+      { label: 'LinkedIn', url: 'https://www.linkedin.com/in/vanessa-marely-aristizabal-angel' },
+      { label: 'Instagram', url: 'https://www.instagram.com/vanessamarelycode/' },
+    ],
+  },
+  {
     id: 'harness-1',
     topic: 'El harness',
     title: 'No le hablas al modelo. Le hablas al harness.',
     bullets: [
-      'Modelo = el LLM (Claude, GPT, Gemini)',
-      'Harness = el sistema que arma el contexto y ejecuta la respuesta',
-      'Agente = Modelo + Harness',
+      'Modelo = el LLM (Claude, GPT, Gemini) — no es de GitHub, GitHub lo conecta',
+      'Harness = GitHub Copilot en sí mismo: arma el contexto y ejecuta la respuesta',
+      'Lo que usas a diario = GitHub Copilot (harness) + el modelo que elegiste',
     ],
     notes:
-      'Cuando escribes un prompt en Copilot, no estás hablando directamente con un modelo de lenguaje. Estás hablando con el harness: el sistema que rodea al modelo, decide qué contexto incluir (instrucciones del proyecto, archivo abierto, selección), se lo entrega al modelo, y después convierte la respuesta del modelo en una acción real sobre tu código — una sugerencia, un archivo editado, un comando ejecutado. El "agente" que usas todos los días es, matemáticamente, Modelo + Harness. Ninguno de los dos solo alcanza.',
+      'Cuando escribes un prompt en Copilot, no estás hablando directamente con un modelo de lenguaje. Estás hablando con el harness — y el harness, en este caso, ES GitHub Copilot: el producto entero, no una pieza aparte. Copilot es el sistema que rodea al modelo, decide qué contexto incluir (instrucciones del proyecto, archivo abierto, selección), se lo entrega al modelo que hayas elegido (Claude, GPT, Gemini — ninguno de ellos es de GitHub, GitHub los conecta), y después convierte la respuesta en una acción real sobre tu código: una sugerencia, un archivo editado, un comando ejecutado. Por eso cambiar de modelo en el selector no cambia "de Copilot" — cambias el motor, pero el harness (Copilot) sigue siendo el mismo.',
     sceneAccent: 'harness',
+    image: '/images/talk/harness.jpg',
   },
   {
     id: 'harness-2',
@@ -73,6 +104,7 @@ export const slides: Slide[] = [
     notes:
       'GitHub Copilot no es un producto — es el mismo harness expuesto en cuatro superficies distintas, cada una pensada para un momento distinto de tu trabajo: el editor para escribir código con contexto inmediato, la terminal para tareas de proyecto completo (instalar dependencias, correr tests, trabajar con git), la app de escritorio para supervisar varios agentes trabajando en paralelo en distintos repos, y github.com/mobile para preguntar o revisar sin tener un proyecto abierto. Lo que aprendes en una superficie —cómo dar buen contexto, cómo leer un plan antes de aprobarlo— te sirve igual en las otras tres.',
     sceneAccent: 'architecture',
+    image: '/images/talk/architecture.jpg',
   },
   {
     id: 'architecture-2',
@@ -162,10 +194,10 @@ export const slides: Slide[] = [
       '1. El modelo correcto para cada tarea',
       '2. Contexto quirúrgico (#file en vez de #codebase para todo)',
       '3. copilot-instructions.md en vez de repetir contexto',
-      '4. Conversaciones cortas — una por tarea',
+      '4. Nueva conversación al cambiar de tarea (no en cada mensaje)',
     ],
     notes:
-      'La optimización de tokens no es "escribir menos" por escribir menos — es dejar de pagar por explicar algo que el proyecto ya sabe. Palanca 1: usa el modelo automático o estándar para tareas simples, reserva los modelos premium para lo que de verdad los necesita. Palanca 2: #file consume 5 a 8 veces menos contexto que #codebase para la misma pregunta, cuando ya sabes qué archivo es relevante — #codebase resuelve "encontrar", #file resuelve "analizar algo que ya encontraste", son problemas distintos. Palanca 3: lo que ya vive en copilot-instructions.md no necesitas retipearlo en el prompt. Palanca 4: una conversación larga acumula todo el historial como contexto en cada mensaje nuevo — abre una conversación nueva cuando cambias de tarea.',
+      'La optimización de tokens no es "escribir menos" por escribir menos — es dejar de pagar por explicar algo que el proyecto ya sabe. Palanca 1: usa el modelo automático o estándar para tareas simples, reserva los modelos premium para lo que de verdad los necesita. Palanca 2: #file consume 5 a 8 veces menos contexto que #codebase para la misma pregunta, cuando ya sabes qué archivo es relevante — #codebase resuelve "encontrar", #file resuelve "analizar algo que ya encontraste", son problemas distintos. Palanca 3: lo que ya vive en copilot-instructions.md no necesitas retipearlo en el prompt. Palanca 4: una conversación larga acumula todo su historial como contexto en cada mensaje nuevo — no se trata de abrir una conversación por cada mensaje (seguir la misma conversación mientras trabajás en lo mismo es lo normal y lo correcto), sino de no arrastrar ese historial cuando ya cambiaste de tarea. Nota aparte sobre Plan Mode: no es una quinta palanca de tokens — no reduce el contexto de un mensaje. Lo que hace es evitarte iteraciones desperdiciadas (el agente corrigiendo un camino equivocado varias veces), que sí terminan costando más créditos que revisar el plan una vez antes de ejecutar. Son dos tipos de ahorro distintos y se complementan.',
     sceneAccent: 'tokens',
   },
   {
@@ -173,12 +205,12 @@ export const slides: Slide[] = [
     topic: 'Optimizar tokens',
     title: 'El mismo resultado, con menos contexto pagado',
     bullets: [
-      'Sin palancas: ~40-55 tokens de contexto repetido antes de llegar a lo específico',
-      'Con palancas: ~15-20 tokens — el resto ya vive en el proyecto',
-      'Mismo resultado en pantalla. Menos tokens pagados por llegar a él.',
+      'Sin palancas: "Quiero validar un campo. El proyecto usa React, TypeScript, Tailwind, los componentes van en src/components, en PascalCase, usamos Zod para validar, no agregues librerías nuevas... agrega validación al email en JobForm"',
+      'Con palancas: "#file:JobForm.tsx agrega validación al email"',
+      'Copilot da la misma respuesta correcta en los dos casos — la diferencia es cuánto tuviste que escribir (y pagar) para llegar ahí',
     ],
     notes:
-      'Cuando repites el stack, las convenciones y la estructura de carpetas en cada prompt, gran parte de esos tokens no le está enseñando nada nuevo a Copilot — solo repite lo que copilot-instructions.md ya sabe. La diferencia práctica: un prompt largo reexplicando todo puede tener 40-55 tokens de puro contexto repetido antes de llegar al pedido real; el mismo pedido, apoyado en instrucciones permanentes y contexto quirúrgico, llega a lo específico en 15-20 tokens. El resultado en pantalla es idéntico — lo que cambia es cuánto pagaste por llegar a él.',
+      'Compará los dos prompts de arriba: el primero repite en cada mensaje algo que copilot-instructions.md ya sabe (el stack, las convenciones, las reglas) — todo ese texto son tokens que pagás sin enseñarle nada nuevo a Copilot. El segundo prompt no repite nada de eso porque ya vive en las instrucciones permanentes del proyecto, y usa #file para señalar el archivo exacto en vez de dejar que #codebase tenga que buscarlo. El resultado que ves en pantalla es el mismo — Copilot igual sabe que es React+TypeScript+Tailwind+Zod y sigue las convenciones — pero llegaste ahí con un prompt mucho más corto. Esa diferencia, multiplicada por cada prompt que escribís en un mes, es la que se nota en tu consumo de créditos.',
     sceneAccent: 'tokens',
   },
   {
@@ -206,6 +238,7 @@ export const slides: Slide[] = [
     notes:
       'Con agentes de IA (Copilot coding agent, Agent Mode, el CLI en autopilot), el ciclo cambia de forma: un issue bien escrito funciona como la spec, se lo asignas al agente, y el agente ejecuta su propio ciclo Pensar → Actuar → Observar — escribe código, corre tests, corrige errores — hasta abrir un Pull Request. Tu trabajo deja de ser "ejecutar cada paso" y pasa a ser "supervisar y aprobar": revisar el plan antes de que se ejecute, revisar el PR antes de mergear. El cuello de botella ya no es escribir código — es la calidad de la spec que le diste al agente.',
     sceneAccent: 'lifecycle',
+    image: '/images/talk/lifecycle.jpg',
   },
   {
     id: 'lifecycle-3',
@@ -233,5 +266,6 @@ export const slides: Slide[] = [
     notes:
       'Tres ideas para llevarte: primero, Copilot no es un modelo, es un modelo dentro de un harness — y el contexto que ese harness recibe determina la calidad de cada respuesta, más que cualquier otro factor. Segundo, elegir bien el modelo, la superficie y cuánto contexto le das es la diferencia entre usar Copilot barato y bien, o caro y mal. Tercero, el ciclo de vida de desarrollo con agentes no te saca del proceso — cambia dónde aplicas tu criterio: de ejecutar cada paso, a escribir buenas specs y revisar buenos resultados.',
     sceneAccent: 'closing',
+    image: '/images/talk/closing.jpg',
   },
 ]

@@ -41,11 +41,13 @@ export function WhatIsCopilot() {
           <h2 className="text-2xl font-semibold">El "harness": lo que hace que Copilot sea más que un modelo de IA</h2>
         </div>
         <p className="leading-relaxed mb-4">
-          Cuando escribes un prompt, no le hablas directamente al modelo de IA (Claude, GPT, Gemini). Le hablas al
-          <strong> harness</strong> — el sistema que rodea al modelo y lo conecta con tu código real: lee los archivos
-          que necesita, arma el contexto (tus instrucciones del proyecto, el archivo abierto, tu selección), se lo
-          entrega al modelo, y después toma la respuesta y la convierte en una acción real sobre tu proyecto (una
-          sugerencia, un archivo editado, un comando ejecutado).
+          Cuando escribes un prompt, no le hablas directamente al modelo de IA (Claude, GPT, Gemini — ninguno de
+          ellos es de GitHub, GitHub los conecta). Le hablas al <strong>harness</strong> — y el harness, acá, es
+          <strong> GitHub Copilot mismo</strong>: el sistema que rodea al modelo y lo conecta con tu código real —
+          lee los archivos que necesita, arma el contexto (tus instrucciones del proyecto, el archivo abierto, tu
+          selección), se lo entrega al modelo que elegiste, y después toma la respuesta y la convierte en una acción
+          real sobre tu proyecto (una sugerencia, un archivo editado, un comando ejecutado). Por eso cambiar de
+          modelo en el selector no te saca de Copilot — cambias el motor, el harness sigue siendo el mismo.
         </p>
         <div className="grid sm:grid-cols-3 gap-3 text-sm">
           <div className="bg-background/60 p-4 rounded border text-center">
