@@ -19,7 +19,8 @@ import {
   Terminal,
   Desktop,
   CheckCircle,
-  GithubLogo
+  GithubLogo,
+  Presentation
 } from '@phosphor-icons/react'
 import { cn } from '@/lib/utils'
 
@@ -34,18 +35,26 @@ import { GitHubEcosystem } from '@/components/sections/GitHubEcosystem'
 import { VSCodeSetup } from '@/components/sections/VSCodeSetup'
 import { CopilotCLI } from '@/components/sections/CopilotCLI'
 import { CopilotDesktop } from '@/components/sections/CopilotDesktop'
+import { CopilotTalkNotes } from '@/components/sections/CopilotTalkNotes'
+import { SlideDeck } from '@/components/slides/SlideDeck'
 
 interface SectionDef {
   id: string
   title: string
   icon: typeof Book
-  component: React.ComponentType
+  component?: React.ComponentType
+  /** Secciones full-bleed no usan el layout de sidebar+columna — ocupan toda la pantalla */
+  fullBleed?: boolean
 }
 
+const DEFAULT_SECTION_ID = 'what-is-github'
+
 const sections: SectionDef[] = [
+  { id: 'slides', title: 'Charla: GitHub Copilot', icon: Presentation, fullBleed: true },
   { id: 'what-is-github', title: '¿Qué es GitHub?', icon: Book, component: WhatIsGitHub },
   { id: 'what-is-copilot', title: '¿Qué es Copilot?', icon: Lightning, component: WhatIsCopilot },
   { id: 'copilot-guide', title: 'Guía de Copilot', icon: Lightbulb, component: CopilotGuide },
+  { id: 'copilot-talk-notes', title: 'Charla: Notas y Ejercicios', icon: Presentation, component: CopilotTalkNotes },
   { id: 'prompts', title: 'Repositorio de Prompts', icon: Code, component: PromptRepository },
   { id: 'roadmap', title: 'Cómo Empezar', icon: Path, component: BeginnerRoadmap },
   { id: 'readme', title: 'Crear README Profesional', icon: FileText, component: ReadmeGuide },
@@ -57,11 +66,12 @@ const sections: SectionDef[] = [
 ]
 
 function App() {
-  const [activeSection, setActiveSection] = useState(sections[0].id)
+  const [activeSection, setActiveSection] = useState('slides')
   const [completedSections, setCompletedSections] = useKV<string[]>('completed-sections', [])
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  const ActiveComponent = sections.find(s => s.id === activeSection)?.component || sections[0].component
+  const activeSectionDef = sections.find(s => s.id === activeSection) ?? sections.find(s => s.id === DEFAULT_SECTION_ID)!
+  const ActiveComponent = activeSectionDef.component ?? sections.find(s => s.id === DEFAULT_SECTION_ID)!.component!
 
   const progressPercentage = ((completedSections || []).length / sections.length) * 100
 
@@ -153,6 +163,15 @@ function App() {
       </div>
     </div>
   )
+
+  if (activeSectionDef.fullBleed) {
+    return (
+      <>
+        <SlideDeck onExit={() => setActiveSection(DEFAULT_SECTION_ID)} />
+        <Toaster />
+      </>
+    )
+  }
 
   return (
     <div className="h-screen flex bg-background">

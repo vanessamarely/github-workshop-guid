@@ -35,6 +35,39 @@ export function WhatIsCopilot() {
         </div>
       </Card>
 
+      <Card className="p-8">
+        <div className="flex items-center gap-3 mb-4">
+          <Robot size={32} weight="fill" className="text-primary" />
+          <h2 className="text-2xl font-semibold">El "harness": lo que hace que Copilot sea más que un modelo de IA</h2>
+        </div>
+        <p className="leading-relaxed mb-4">
+          Cuando escribes un prompt, no le hablas directamente al modelo de IA (Claude, GPT, Gemini). Le hablas al
+          <strong> harness</strong> — el sistema que rodea al modelo y lo conecta con tu código real: lee los archivos
+          que necesita, arma el contexto (tus instrucciones del proyecto, el archivo abierto, tu selección), se lo
+          entrega al modelo, y después toma la respuesta y la convierte en una acción real sobre tu proyecto (una
+          sugerencia, un archivo editado, un comando ejecutado).
+        </p>
+        <div className="grid sm:grid-cols-3 gap-3 text-sm">
+          <div className="bg-background/60 p-4 rounded border text-center">
+            <div className="font-semibold mb-1">1. Pensar</div>
+            <p className="text-muted-foreground">El modelo analiza tu prompt + el contexto que el harness le armó</p>
+          </div>
+          <div className="bg-background/60 p-4 rounded border text-center">
+            <div className="font-semibold mb-1">2. Actuar</div>
+            <p className="text-muted-foreground">El harness convierte la respuesta en algo real: código, un archivo editado, un comando</p>
+          </div>
+          <div className="bg-background/60 p-4 rounded border text-center">
+            <div className="font-semibold mb-1">3. Observar</div>
+            <p className="text-muted-foreground">El harness mira el resultado (¿corrió bien? ¿hay un error?) y decide el siguiente paso</p>
+          </div>
+        </div>
+        <p className="text-sm text-muted-foreground mt-4">
+          Por qué importa: la calidad de la respuesta depende tanto del modelo como de qué tan buen contexto le da
+          el harness — por eso un prompt vago da una respuesta genérica, y un prompt con el archivo correcto
+          adjuntado da una respuesta precisa. No es que el modelo "piense mejor", es que recibió mejor información.
+        </p>
+      </Card>
+
       <div>
         <h2 className="text-2xl font-semibold mb-6">¿Qué puedes hacer con Copilot?</h2>
         <div className="grid md:grid-cols-2 gap-4">
@@ -155,7 +188,7 @@ export function WhatIsCopilot() {
               <h3 className="font-semibold text-lg">En tu editor (VS Code y más)</h3>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Sugerencias mientras escribes, chat, Edit Mode y Agent Mode integrados directamente en tu editor.
+              Sugerencias mientras escribes, chat, Plan Mode y Agent Mode integrados directamente en tu editor.
               Es la forma más común de empezar. Ver sección "VS Code + Copilot".
             </p>
           </Card>
@@ -190,6 +223,15 @@ export function WhatIsCopilot() {
             </p>
           </Card>
         </div>
+        <Card className="p-6 mt-4 bg-muted/40">
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            <strong>Cuatro lugares, un mismo harness:</strong> no son cuatro productos distintos con lógica propia —
+            las cuatro superficies (editor, terminal, app de escritorio, github.com) le hablan al mismo harness detrás
+            de escena. Cambia dónde escribes el prompt y qué tan autónomo dejas que actúe, pero el ciclo Pensar →
+            Actuar → Observar es el mismo en todas. Por eso lo que aprendes en una (por ejemplo, dar buen contexto)
+            te sirve igual en las otras tres.
+          </p>
+        </Card>
       </div>
 
       <div>

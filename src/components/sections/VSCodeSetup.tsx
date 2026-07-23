@@ -70,12 +70,17 @@ export function VSCodeSetup() {
             <li>En VS Code, click en el ícono de extensiones (cuadrados en la barra lateral)</li>
             <li>Busca "GitHub Copilot"</li>
             <li>Click en Install en la extensión de GitHub (autor: GitHub)</li>
-            <li>También instala "GitHub Copilot Chat" (la segunda en la lista)</li>
             <li>Reinicia VS Code</li>
             <li>Se abrirá una ventana pidiendo autorización, acepta</li>
           </ol>
+          <div className="bg-muted p-3 rounded text-sm mb-3">
+            Desde finales de 2025, una sola extensión "GitHub Copilot" incluye todo: completions,
+            chat y Agent Mode. Ya no hace falta instalar "GitHub Copilot Chat" por separado — si la ves
+            en el Marketplace, es la versión vieja que ahora se instala automáticamente como parte de
+            la principal.
+          </div>
           <div className="bg-primary/10 p-3 rounded text-sm">
-            <strong>Verificar que funciona:</strong> Crea un archivo .js, escribe un comentario como 
+            <strong>Verificar que funciona:</strong> Crea un archivo .js, escribe un comentario como
             "// función que suma dos números" y presiona Enter. Deberías ver una sugerencia en gris.
           </div>
         </StepCard>
@@ -208,7 +213,7 @@ export function VSCodeSetup() {
                 <li>• <kbd className="bg-muted px-2 py-1 rounded">Ctrl+Alt+I</kbd> (Mac: <kbd className="bg-muted px-2 py-1 rounded">Cmd+Ctrl+I</kbd>) - Abrir panel de Chat</li>
                 <li>• <kbd className="bg-muted px-2 py-1 rounded">Ctrl+I</kbd> - Chat inline sobre el código seleccionado</li>
                 <li>• Selecciona código + click derecho → "Copilot" → "Explain"</li>
-                <li>• Elige el modo (Ask / Edit / Agent) y el modelo desde los selectores del panel</li>
+                <li>• Elige el modo (Ask / Plan / Agent) y el modelo desde los selectores del panel</li>
               </ul>
             </div>
           </Card>
@@ -223,9 +228,28 @@ export function VSCodeSetup() {
               <ul className="ml-4 space-y-1">
                 <li>• Copilot decide qué archivos editar y qué comandos correr</li>
                 <li>• Te muestra cada cambio antes de aplicarlo (puedes aceptar o deshacer)</li>
-                <li>• Usa <code className="bg-muted px-1 rounded">#file</code> o <code className="bg-muted px-1 rounded">@workspace</code> para darle contexto extra</li>
                 <li>• Ideal para "añade validación a este formulario" o "arregla este bug en todo el proyecto"</li>
               </ul>
+            </div>
+          </Card>
+
+          <Card className="p-6">
+            <div className="flex gap-3 items-start mb-3">
+              <Wrench size={24} weight="fill" className="text-primary flex-shrink-0" />
+              <h3 className="font-semibold">Variables de contexto</h3>
+            </div>
+            <div className="space-y-2 text-sm text-muted-foreground">
+              <p>Escribe <code className="bg-muted px-1 rounded">#</code> en el chat para señalar exactamente qué debe ver Copilot, en vez de esperar que lo adivine:</p>
+              <ul className="ml-4 space-y-1">
+                <li>• <code className="bg-muted px-1 rounded">#file</code> — adjunta un archivo específico (elígelo de la lista que aparece, no lo escribas a mano)</li>
+                <li>• <code className="bg-muted px-1 rounded">#selection</code> — el texto que tienes seleccionado en el editor</li>
+                <li>• <code className="bg-muted px-1 rounded">#codebase</code> — búsqueda semántica en todo el proyecto (el agente también la usa solo cuando hace falta)</li>
+                <li>• <code className="bg-muted px-1 rounded">#terminalLastCommand</code> — el último comando de la terminal y su salida, útil para pegar un error sin copiarlo a mano</li>
+                <li>• <code className="bg-muted px-1 rounded">#changes</code> — los cambios sin commitear (git diff)</li>
+              </ul>
+              <p className="text-xs pt-1">
+                Si ves <code className="bg-muted px-1 rounded">@workspace</code> mencionado en algún tutorial viejo: ya no existe como participante de chat, quedó reemplazado por <code className="bg-muted px-1 rounded">#codebase</code>.
+              </p>
             </div>
           </Card>
 

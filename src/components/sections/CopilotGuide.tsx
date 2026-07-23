@@ -108,12 +108,12 @@ export function CopilotGuide() {
               <p className="text-muted-foreground">Para entender código, resolver dudas o pedir explicaciones. No modifica archivos.</p>
             </div>
             <div className="bg-background/60 p-4 rounded border">
-              <div className="font-semibold mb-1">✏️ Edit</div>
-              <p className="text-muted-foreground">Para cambios puntuales en uno o varios archivos que ya tienes abiertos. Tú revisas cada cambio.</p>
+              <div className="font-semibold mb-1">🗺️ Plan</div>
+              <p className="text-muted-foreground">Te muestra el plan completo de archivos a cambiar antes de tocar nada. Apruebas el plan y recién ahí se ejecuta.</p>
             </div>
             <div className="bg-background/60 p-4 rounded border">
               <div className="font-semibold mb-1">🤖 Agent</div>
-              <p className="text-muted-foreground">Para tareas completas de varios pasos: Copilot decide qué archivos tocar, ejecuta comandos y corrige errores solo.</p>
+              <p className="text-muted-foreground">Para cambios directos o tareas completas de varios pasos: Copilot edita, ejecuta comandos y corrige errores solo. Tú revisas el resultado.</p>
             </div>
           </div>
         </Card>
@@ -121,22 +121,69 @@ export function CopilotGuide() {
         <StepCard number={6} title="Dale contexto permanente con instrucciones personalizadas">
           <p className="mb-3">
             Puedes crear un archivo <code className="bg-muted px-2 py-1 rounded">.github/copilot-instructions.md</code> en
-            tu repositorio con reglas del proyecto (convenciones de nombres, stack usado, qué evitar). Copilot lo lee
-            automáticamente en cada conversación, así no repites el mismo contexto una y otra vez.
+            tu repositorio con reglas del proyecto. Copilot lo lee automáticamente en cada conversación (chat, Agent Mode,
+            y también en el code review), así no repites el mismo contexto una y otra vez. La estructura que mejor funciona
+            tiene cuatro secciones:
           </p>
-          <div className="bg-muted p-4 rounded font-mono text-xs">
-            # .github/copilot-instructions.md<br />
-            Este proyecto usa React + TypeScript + Tailwind.<br />
-            Los componentes van en src/components. Usa nombres en inglés para variables.
+          <ul className="ml-4 mb-3 space-y-1 text-sm text-muted-foreground">
+            <li>• <strong>Stack</strong> — qué tecnologías usa el proyecto (lenguaje, framework, librerías clave)</li>
+            <li>• <strong>Convenciones</strong> — cómo se nombran archivos, carpetas, variables</li>
+            <li>• <strong>Reglas de negocio</strong> — cosas específicas del dominio que Copilot no puede adivinar</li>
+            <li>• <strong>Qué NO hacer</strong> — restricciones explícitas (ej. "no uses librerías de pago", "nunca borres tests")</li>
+          </ul>
+          <div className="bg-muted p-4 rounded font-mono text-xs whitespace-pre-line">
+{`# .github/copilot-instructions.md
+
+## Stack
+React + TypeScript + Tailwind CSS
+
+## Convenciones
+Componentes en PascalCase, variables en inglés, un componente por archivo
+
+## Reglas de negocio
+Los precios siempre se muestran con 2 decimales y símbolo de moneda
+
+## Qué NO hacer
+No agregar dependencias nuevas sin preguntar primero`}
           </div>
         </StepCard>
 
         <StepCard number={7} title="Elige el modelo según la tarea">
-          <p>
-            Desde el selector de modelo en el chat puedes cambiar entre Claude, Gemini o GPT (o dejar la selección
-            automática). Para dudas rápidas o completaciones, el modelo automático es suficiente; para tareas
-            complejas de arquitectura o refactors grandes, prueba un modelo más avanzado.
+          <p className="mb-3">
+            Desde el selector de modelo en el chat puedes elegir entre varios modelos (Claude, Gemini, GPT, según tu
+            plan) o dejar la selección automática. No es solo preferencia — cada plan de Copilot da acceso a un grupo
+            distinto de modelos:
           </p>
+          <ul className="ml-4 space-y-1 text-sm text-muted-foreground">
+            <li>• <strong>Modelo automático</strong> — Copilot elige el más eficiente para la tarea; consume créditos IA igual que cualquier chat, pero menos que uno premium</li>
+            <li>• <strong>Modelos estándar</strong> — disponibles desde el plan Pro, buenos para chat y tareas de todos los días</li>
+            <li>• <strong>Modelos premium</strong> — los más capaces (mejor razonamiento, mejor para arquitectura o refactors grandes), consumen más créditos por uso y suelen requerir un plan más alto (Pro+, Max, Business o Enterprise, según el modelo)</li>
+          </ul>
+          <div className="bg-muted p-3 rounded text-sm mt-3">
+            Ojo con confundir esto: lo que <strong>nunca</strong> consume créditos son las completions mientras escribes
+            y las Next Edit Suggestions — no el chat. Abrir el chat, aunque sea con el modelo automático, siempre
+            gasta créditos.
+          </div>
+          <p className="mt-3 text-sm">
+            La tabla completa de planes está en la sección "¿Qué es Copilot?".</p>
+        </StepCard>
+
+        <StepCard number={8} title="BYOK: usar tu propia clave de modelo (para organizaciones)">
+          <p className="mb-3">
+            BYOK (<em>Bring Your Own Key</em>, "trae tu propia clave") deja que una organización conecte su propia
+            cuenta de un proveedor de IA — Anthropic, OpenAI, Google AI Studio, AWS Bedrock, Microsoft Foundry, o
+            cualquier endpoint compatible con OpenAI — y usar esos modelos dentro de Copilot, en vez de depender
+            solo de los modelos que GitHub ofrece por defecto.
+          </p>
+          <ul className="ml-4 space-y-1 text-sm text-muted-foreground">
+            <li>• Lo configura un administrador de la organización (no cada persona por separado)</li>
+            <li>• Sirve para usar un modelo específico que la empresa ya paga o prefiere, o cumplir una política interna</li>
+            <li>• Ya funciona en VS Code, en el Copilot CLI y en la Copilot App — no solo en el navegador</li>
+          </ul>
+          <div className="bg-muted p-3 rounded text-sm mt-3">
+            No es algo que necesites configurar como estudiante o developer individual — está pensado para planes
+            Business/Enterprise. Es útil saber que existe, por si en tu primer trabajo el equipo ya lo usa.
+          </div>
         </StepCard>
       </div>
 

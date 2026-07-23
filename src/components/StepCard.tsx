@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 
 interface StepCardProps {
   number: number
-  title: string
+  title: ReactNode
   children: ReactNode
 }
 
