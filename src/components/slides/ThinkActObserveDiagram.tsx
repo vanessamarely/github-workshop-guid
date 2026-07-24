@@ -12,11 +12,78 @@ import * as THREE from 'three'
  * canvas es transparente para dejar ver la tarjeta blanca del contenedor.
  */
 
-const STAGES = [
-  { label: '1. Pensar', color: '#7c3aed', position: new THREE.Vector3(0, 1.05, 0), labelOffset: new THREE.Vector3(0, 0.85, 0) },
-  { label: '2. Actuar', color: '#c026d3', position: new THREE.Vector3(0.95, -0.55, 0), labelOffset: new THREE.Vector3(0.15, -0.85, 0) },
-  { label: '3. Observar', color: '#6d28d9', position: new THREE.Vector3(-0.95, -0.55, 0), labelOffset: new THREE.Vector3(-0.15, -0.85, 0) },
+type IconKind = 'think' | 'act' | 'observe'
+
+const STAGES: Array<{
+  label: string
+  color: string
+  icon: IconKind
+  position: THREE.Vector3
+  labelOffset: THREE.Vector3
+}> = [
+  { label: '1. Pensar', color: '#7c3aed', icon: 'think', position: new THREE.Vector3(0, 1.05, 0), labelOffset: new THREE.Vector3(0, 0.85, 0) },
+  { label: '2. Actuar', color: '#c026d3', icon: 'act', position: new THREE.Vector3(0.95, -0.55, 0), labelOffset: new THREE.Vector3(0.15, -0.85, 0) },
+  { label: '3. Observar', color: '#6d28d9', icon: 'observe', position: new THREE.Vector3(-0.95, -0.55, 0), labelOffset: new THREE.Vector3(-0.15, -0.85, 0) },
 ]
+
+/**
+ * Ícono por etapa, dibujado a mano con primitivas de canvas (nunca un logo o
+ * ícono de terceros) — para que cada nodo comunique qué representa, no solo
+ * "una bola de color": foco = idea (Pensar), rayo = ejecución (Actuar),
+ * ojo = revisar el resultado (Observar).
+ */
+function createIconTexture(kind: IconKind): THREE.CanvasTexture {
+  const canvas = document.createElement('canvas')
+  canvas.width = 256
+  canvas.height = 256
+  const ctx = canvas.getContext('2d')!
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
+  ctx.fillStyle = '#ffffff'
+  ctx.strokeStyle = '#ffffff'
+  ctx.lineCap = 'round'
+  ctx.lineJoin = 'round'
+
+  if (kind === 'think') {
+    // Foco: rayos de idea + bombilla + base.
+    ctx.lineWidth = 9
+    ;[[128, 26, 128, 4], [88, 40, 72, 20], [168, 40, 184, 20]].forEach(([x1, y1, x2, y2]) => {
+      ctx.beginPath()
+      ctx.moveTo(x1, y1)
+      ctx.lineTo(x2, y2)
+      ctx.stroke()
+    })
+    ctx.beginPath()
+    ctx.arc(128, 100, 56, 0, Math.PI * 2)
+    ctx.fill()
+    ctx.fillRect(104, 148, 48, 26)
+  } else if (kind === 'act') {
+    // Rayo: ejecución, algo pasa.
+    ctx.beginPath()
+    ctx.moveTo(150, 26)
+    ctx.lineTo(84, 140)
+    ctx.lineTo(126, 140)
+    ctx.lineTo(100, 230)
+    ctx.lineTo(178, 108)
+    ctx.lineTo(134, 108)
+    ctx.closePath()
+    ctx.fill()
+  } else {
+    // Ojo: mirar/revisar el resultado.
+    ctx.lineWidth = 15
+    ctx.beginPath()
+    ctx.moveTo(36, 128)
+    ctx.quadraticCurveTo(128, 52, 220, 128)
+    ctx.quadraticCurveTo(128, 204, 36, 128)
+    ctx.stroke()
+    ctx.beginPath()
+    ctx.arc(128, 128, 24, 0, Math.PI * 2)
+    ctx.fill()
+  }
+
+  const texture = new THREE.CanvasTexture(canvas)
+  texture.needsUpdate = true
+  return texture
+}
 
 function createLabelTexture(text: string, color: string): THREE.CanvasTexture {
   const canvas = document.createElement('canvas')
@@ -80,6 +147,7 @@ export function ThinkActObserveDiagram() {
     const nodes: THREE.Mesh[] = []
     const halos: THREE.Mesh[] = []
     const labelSprites: THREE.Sprite[] = []
+    const iconSprites: THREE.Sprite[] = []
 
     STAGES.forEach((stage) => {
       const material = new THREE.MeshBasicMaterial({ color: stage.color })
@@ -108,6 +176,23 @@ export function ThinkActObserveDiagram() {
       group.add(label)
       labelSprites.push(label)
       disposables.push(labelTexture, labelMaterial)
+
+      // Ícono al frente del nodo (depthTest off para que nunca quede
+      // tapado por la propia esfera al rotar).
+      const iconTexture = createIconTexture(stage.icon)
+      const iconMaterial = new THREE.SpriteMaterial({
+        map: iconTexture,
+        transparent: true,
+        depthTest: false,
+        depthWrite: false,
+      })
+      const icon = new THREE.Sprite(iconMaterial)
+      icon.scale.set(0.46, 0.46, 1)
+      icon.position.copy(stage.position)
+      icon.position.z += 0.5
+      group.add(icon)
+      iconSprites.push(icon)
+      disposables.push(iconTexture, iconMaterial)
     })
 
     // Loop direccional: Pensar → Actuar → Observar → Pensar, con arcos
@@ -163,6 +248,24 @@ export function ThinkActObserveDiagram() {
     group.add(glow)
     disposables.push(glowTexture, glowMaterial)
 
+    // Estela detrás del pulso — refuerza que esto es un flujo continuo con
+    // una dirección, no solo puntos saltando de nodo en nodo.
+    const TRAIL_COUNT = 8
+    const TRAIL_STRIDE = 4
+    const trailGeometry = new THREE.SphereGeometry(0.06, 10, 10)
+    disposables.push(trailGeometry)
+    const trailDots: THREE.Mesh[] = []
+    for (let i = 0; i < TRAIL_COUNT; i++) {
+      const trailMaterial = new THREE.MeshBasicMaterial({ color: '#a855f7', transparent: true, opacity: 0 })
+      const dot = new THREE.Mesh(trailGeometry, trailMaterial)
+      dot.visible = false
+      group.add(dot)
+      trailDots.push(dot)
+      disposables.push(trailMaterial)
+    }
+    const posHistory: THREE.Vector3[] = []
+    const MAX_HISTORY = TRAIL_COUNT * TRAIL_STRIDE + 1
+
     let frameId: number
     const clock = new THREE.Clock()
     const CYCLE_SECONDS = 5
@@ -180,8 +283,25 @@ export function ThinkActObserveDiagram() {
       pulse.position.copy(pulsePos)
       glow.position.copy(pulsePos)
 
-      // Cada nodo se activa (escala + halo más visible) según qué tan
-      // cerca esté el pulso — sin ventanas fijas, solo por distancia real.
+      // Estela: guarda posiciones pasadas del pulso y las muestra cada vez
+      // más tenues/pequeñas mientras más viejas son.
+      posHistory.unshift(pulsePos.clone())
+      if (posHistory.length > MAX_HISTORY) posHistory.length = MAX_HISTORY
+      trailDots.forEach((dot, i) => {
+        const idx = (i + 1) * TRAIL_STRIDE
+        if (idx < posHistory.length) {
+          dot.visible = true
+          dot.position.copy(posHistory[idx])
+          const fade = 1 - i / TRAIL_COUNT
+          ;(dot.material as THREE.MeshBasicMaterial).opacity = fade * 0.5
+          dot.scale.setScalar(fade)
+        } else {
+          dot.visible = false
+        }
+      })
+
+      // Cada nodo se activa (escala + halo + ícono más visibles) según qué
+      // tan cerca esté el pulso — sin ventanas fijas, solo por distancia real.
       nodes.forEach((node, i) => {
         const dist = node.position.distanceTo(pulsePos)
         const activation = Math.max(0, 1 - dist / 1.15)
@@ -192,6 +312,9 @@ export function ThinkActObserveDiagram() {
         halos[i].scale.setScalar(scale)
         ;(halos[i].material as THREE.MeshBasicMaterial).opacity = 0.18 + activation * 0.35
         labelSprites[i].scale.set(1.7 + activation * 0.15, 0.42 + activation * 0.04, 1)
+        const iconScale = 0.46 * (1 + activation * 0.3)
+        iconSprites[i].scale.set(iconScale, iconScale, 1)
+        ;(iconSprites[i].material as THREE.SpriteMaterial).opacity = 0.8 + activation * 0.2
       })
 
       // Rotación sutil de todo el grupo — le da profundidad sin distraer

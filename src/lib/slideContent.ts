@@ -137,7 +137,6 @@ export const slides: Slide[] = [
     notes:
       'GitHub Copilot no es un producto — es el mismo harness expuesto en cuatro superficies distintas, cada una pensada para un momento distinto de tu trabajo: el editor para escribir código con contexto inmediato, la terminal para tareas de proyecto completo (instalar dependencias, correr tests, trabajar con git), la app de escritorio para supervisar varios agentes trabajando en paralelo en distintos repos, y github.com/mobile para preguntar o revisar sin tener un proyecto abierto. Lo que aprendes en una superficie —cómo dar buen contexto, cómo leer un plan antes de aprobarlo— te sirve igual en las otras tres.',
     sceneAccent: 'architecture',
-    image: '/images/talk/architecture.jpg',
   },
   {
     id: 'architecture-2',
@@ -151,6 +150,7 @@ export const slides: Slide[] = [
     notes:
       'Dentro de cualquier superficie, la decisión real no es "qué herramienta uso" sino "cuánta autonomía le doy". Ask es para pensar antes de actuar. Plan es para cuando quieres ver el alcance completo de un cambio antes de comprometerte. Agent ejecuta — puede ser un cambio de un archivo o una tarea de varios pasos encadenados, la diferencia la marca qué tan grande es lo que le pides, no un modo distinto. El error más común no es elegir mal la superficie, es usar Agent para una pregunta de dos líneas: gasta más créditos y tiempo de los necesarios.',
     sceneAccent: 'architecture',
+    image: '/images/talk/architecture.jpg',
   },
   {
     id: 'models-1',
