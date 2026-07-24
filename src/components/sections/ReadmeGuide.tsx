@@ -203,9 +203,9 @@ const yo = {
               </Button>
             </div>
             <p className="text-xs text-muted-foreground mt-3">
-              Es un proyecto open source hecho por mí — si te sirvió, dale <strong>Star</strong> al repo.
-              No cuesta nada, pero sí ayuda: hace que el proyecto sea más fácil de encontrar y le muestra a
-              otras personas que el contenido realmente funciona.
+              Es un proyecto open source hecho por mí — si te sirvió, me encantaría que le dejaras una{' '}
+              <strong>Star</strong>. Es una forma simple y genuina de decir "esto me ayudó", y de paso hace
+              que más personas lo encuentren. ¡Se agradece muchísimo! 💜
             </p>
           </div>
         </div>

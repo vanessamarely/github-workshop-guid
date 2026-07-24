@@ -79,10 +79,10 @@ export const slides: Slide[] = [
     bullets: [
       'github.com/vanessamarely/github-workshop-guid',
       'Todo el código de esta guía y de este deck, open source',
-      '¿Te gustó el proyecto? Dale clic en Star ⭐ — no cuesta nada y ayuda mucho',
+      '¿Te gustó el proyecto? Me encantaría que le dejes una Star ⭐',
     ],
     notes:
-      'Todo lo que ves en esta charla —la guía interactiva y este mismo slide deck— vive en un único repositorio open source: github.com/vanessamarely/github-workshop-guid. Puedes clonarlo, revisar el código, o volver acá cuando quieras repasar un concepto. Si el proyecto te sirvió, dale clic en Star: no cuesta nada, pero sí ayuda — hace que el repositorio sea más fácil de encontrar en GitHub, y le muestra a otras personas (y a mí) que el contenido realmente sirvió.',
+      'Todo lo que ves en esta charla —la guía interactiva y este mismo slide deck— vive en un único repositorio open source: github.com/vanessamarely/github-workshop-guid. Puedes clonarlo, revisar el código, o volver acá cuando quieras repasar un concepto. Si el proyecto te sirvió, me encantaría que le dejaras una Star — es una forma simple y genuina de decirme "esto me sirvió", y de paso ayuda a que más personas lo encuentren. ¡Gracias de antemano!',
     sceneAccent: 'intro',
     image: '/images/talk/repo-qr.png',
     links: [{ label: 'Abrir repositorio', url: 'https://github.com/vanessamarely/github-workshop-guid' }],

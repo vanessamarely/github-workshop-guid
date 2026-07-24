@@ -16,7 +16,8 @@ export const prompts: Prompt[] = [
     title: 'Tutorial paso a paso',
     description: 'Crear un tutorial completo sobre un tema',
     prompt: 'Crea un tutorial paso a paso para aprender [tecnología/concepto]. Incluye explicaciones, ejemplos de código comentados y ejercicios prácticos.',
-    tags: ['tutorial', 'práctica']
+    tags: ['tutorial', 'práctica'],
+    modelHint: 'Contenido educativo — el modelo automático redacta bien esto, no necesitas uno premium.'
   },
   {
     id: 'learn-3',
@@ -24,7 +25,8 @@ export const prompts: Prompt[] = [
     title: 'Comparar tecnologías',
     description: 'Entender diferencias entre opciones similares',
     prompt: 'Compara [tecnología A] vs [tecnología B]. Explica cuándo usar cada una, sus ventajas y desventajas, y dame ejemplos prácticos.',
-    tags: ['comparación', 'decisión']
+    tags: ['comparación', 'decisión'],
+    modelHint: 'Es conocimiento general, no razonamiento profundo — el modelo automático responde bien.'
   },
   {
     id: 'learn-4',
@@ -41,7 +43,8 @@ export const prompts: Prompt[] = [
     title: 'Componente desde cero',
     description: 'Generar un componente completo con estilos',
     prompt: 'Crea un componente [descripción del componente] en React con TypeScript. Incluye estilos con Tailwind CSS, props tipadas y comentarios explicativos.',
-    tags: ['react', 'componente']
+    tags: ['react', 'componente'],
+    modelHint: 'Para un componente estándar, el modelo automático rinde bien. Sube a uno premium solo si la lógica interna es compleja.'
   },
   {
     id: 'create-2',
@@ -49,7 +52,8 @@ export const prompts: Prompt[] = [
     title: 'Función con validación',
     description: 'Crear función robusta con manejo de errores',
     prompt: 'Crea una función que [descripción de funcionalidad]. Incluye validación de entrada, manejo de errores y documentación JSDoc.',
-    tags: ['función', 'validación']
+    tags: ['función', 'validación'],
+    modelHint: 'Función acotada y bien definida — el modelo automático la resuelve sin problema.'
   },
   {
     id: 'create-3',
@@ -66,7 +70,8 @@ export const prompts: Prompt[] = [
     title: 'Página completa',
     description: 'Generar página web responsive',
     prompt: 'Crea una página web responsive para [propósito]. Usa HTML semántico, CSS moderno y JavaScript vanilla. Incluye accesibilidad (ARIA labels).',
-    tags: ['página', 'responsive']
+    tags: ['página', 'responsive'],
+    modelHint: 'HTML/CSS/JS estándar — el modelo automático alcanza. Reserva el premium para lógica de negocio compleja.'
   },
   {
     id: 'understand-1',
@@ -74,7 +79,8 @@ export const prompts: Prompt[] = [
     title: 'Explicar código existente',
     description: 'Entender qué hace un código complejo',
     prompt: 'Explica este código línea por línea en español simple: [pegar código]. ¿Qué hace cada parte y cómo funciona en conjunto?',
-    tags: ['lectura', 'comprensión']
+    tags: ['lectura', 'comprensión'],
+    modelHint: 'Explicar código ya escrito no exige mucho razonamiento — el modelo automático es la opción más barata.'
   },
   {
     id: 'understand-2',
@@ -91,7 +97,8 @@ export const prompts: Prompt[] = [
     title: 'Traducir entre lenguajes',
     description: 'Convertir código de un lenguaje a otro',
     prompt: 'Traduce este código de [lenguaje origen] a [lenguaje destino] manteniendo la misma funcionalidad: [pegar código]',
-    tags: ['traducción', 'lenguajes']
+    tags: ['traducción', 'lenguajes'],
+    modelHint: 'El automático funciona bien para traducciones directas. Si los lenguajes tienen paradigmas muy distintos, prueba con uno premium.'
   },
   {
     id: 'improve-1',
@@ -117,7 +124,8 @@ export const prompts: Prompt[] = [
     title: 'Hacer código accesible',
     description: 'Mejorar accesibilidad web',
     prompt: 'Mejora la accesibilidad de este componente HTML/React. Añade ARIA labels apropiados, navegación por teclado y soporte para lectores de pantalla: [pegar código]',
-    tags: ['a11y', 'accesibilidad']
+    tags: ['a11y', 'accesibilidad'],
+    modelHint: 'Son patrones bien documentados — el modelo automático los aplica correctamente sin gastar de más.'
   },
   {
     id: 'improve-4',
@@ -125,7 +133,8 @@ export const prompts: Prompt[] = [
     title: 'Documentar código',
     description: 'Añadir documentación completa',
     prompt: 'Añade documentación completa a este código: comentarios explicativos, JSDoc/docstrings, y un README con ejemplos de uso: [pegar código]',
-    tags: ['documentación', 'comments']
+    tags: ['documentación', 'comments'],
+    modelHint: 'Documentar código ya escrito es redacción, no lógica nueva — el modelo automático alcanza.'
   },
   {
     id: 'test-1',
@@ -142,7 +151,8 @@ export const prompts: Prompt[] = [
     title: 'Casos de prueba',
     description: 'Identificar escenarios a testear',
     prompt: 'Para esta funcionalidad, identifica todos los casos de prueba importantes: casos felices, edge cases, errores esperados y validaciones: [descripción de funcionalidad]',
-    tags: ['test-cases', 'qa']
+    tags: ['test-cases', 'qa'],
+    modelHint: 'El automático cubre bien los casos típicos. Si la funcionalidad es crítica o muy compleja, un modelo premium encuentra más edge cases.'
   },
   {
     id: 'debug-1',
@@ -159,7 +169,8 @@ export const prompts: Prompt[] = [
     title: 'Añadir logging',
     description: 'Agregar logs para debugging',
     prompt: 'Añade logging estratégico a este código para facilitar debugging. Incluye información relevante en cada punto crítico: [pegar código]',
-    tags: ['logging', 'debugging']
+    tags: ['logging', 'debugging'],
+    modelHint: 'Agregar logs es mecánico — el modelo automático lo hace bien y más barato.'
   },
   {
     id: 'project-1',
@@ -167,7 +178,8 @@ export const prompts: Prompt[] = [
     title: 'Idea de proyecto',
     description: 'Generar ideas de proyectos para portafolio',
     prompt: 'Dame 5 ideas de proyectos para mi portafolio tech. Soy [nivel de experiencia] y quiero demostrar habilidades en [tecnologías]. Cada proyecto debe ser completable en [tiempo].',
-    tags: ['ideas', 'portafolio']
+    tags: ['ideas', 'portafolio'],
+    modelHint: 'Es brainstorming, no ejecución — el modelo automático da buenas ideas sin gastar de más.'
   },
   {
     id: 'project-2',
@@ -184,7 +196,8 @@ export const prompts: Prompt[] = [
     title: 'Features para MVP',
     description: 'Definir funcionalidades mínimas viables',
     prompt: 'Para una aplicación de [descripción], define las features del MVP. Prioriza funcionalidad core vs nice-to-have. Dame un roadmap de implementación.',
-    tags: ['mvp', 'planificación']
+    tags: ['mvp', 'planificación'],
+    modelHint: 'El automático prioriza bien para la mayoría de los casos. Si el producto es muy complejo, un modelo premium ayuda a decidir mejor los trade-offs.'
   },
   {
     id: 'readme-1',
@@ -210,7 +223,8 @@ export const prompts: Prompt[] = [
     title: 'Documentación API',
     description: 'Documentar endpoints de API',
     prompt: 'Documenta esta API: [descripción/endpoints]. Incluye para cada endpoint: método HTTP, URL, parámetros, ejemplo de request, ejemplo de response y códigos de error.',
-    tags: ['api-docs', 'documentación']
+    tags: ['api-docs', 'documentación'],
+    modelHint: 'Documentación estructurada — el modelo automático la arma bien y más barato.'
   },
   {
     id: 'cv-1',
@@ -227,7 +241,8 @@ export const prompts: Prompt[] = [
     title: 'Experiencia académica como experiencia laboral',
     description: 'Presentar proyectos universitarios profesionalmente',
     prompt: 'Transforma este proyecto universitario en experiencia profesional para CV: [descripción del proyecto académico]. Enfócate en skills transferibles y resultados.',
-    tags: ['cv', 'académico']
+    tags: ['cv', 'académico'],
+    modelHint: 'Redacción y reencuadre — el modelo automático es la opción más económica.'
   },
   {
     id: 'cv-3',
@@ -235,7 +250,8 @@ export const prompts: Prompt[] = [
     title: 'Skills y tecnologías',
     description: 'Listar habilidades técnicas apropiadamente',
     prompt: 'Organiza mis skills técnicos para mi CV: [lista de tecnologías/herramientas]. Agrúpalos por categoría (Frontend, Backend, Tools, etc.) y nivel de dominio.',
-    tags: ['skills', 'cv']
+    tags: ['skills', 'cv'],
+    modelHint: 'Es organizar una lista, no razonar — el modelo automático sobra para esto.'
   },
   {
     id: 'interview-1',
@@ -243,7 +259,8 @@ export const prompts: Prompt[] = [
     title: 'Preparar respuestas técnicas',
     description: 'Practicar preguntas técnicas comunes',
     prompt: 'Simula una entrevista técnica para posición de [rol]. Hazme 5 preguntas técnicas sobre [tecnologías] con dificultad [nivel]. Dame feedback sobre mis respuestas.',
-    tags: ['entrevista', 'preparación']
+    tags: ['entrevista', 'preparación'],
+    modelHint: 'Para dificultad senior o feedback más detallado, un modelo premium simula mejor la entrevista real. Para nivel básico, el automático alcanza.'
   },
   {
     id: 'interview-2',
@@ -251,7 +268,8 @@ export const prompts: Prompt[] = [
     title: 'Explicar proyecto en entrevista',
     description: 'Practicar presentación de proyectos',
     prompt: 'Ayúdame a preparar cómo presentar este proyecto en una entrevista: [descripción]. Dame un script de 2-3 minutos destacando decisiones técnicas y desafíos superados.',
-    tags: ['entrevista', 'storytelling']
+    tags: ['entrevista', 'storytelling'],
+    modelHint: 'Es storytelling, no código — el modelo automático arma un buen script sin gastar de más.'
   },
   {
     id: 'interview-3',
@@ -259,7 +277,8 @@ export const prompts: Prompt[] = [
     title: 'Preguntas conductuales',
     description: 'Preparar respuestas STAR',
     prompt: 'Para la pregunta de entrevista "[pregunta conductual]", ayúdame a estructurar mi respuesta usando el método STAR basándome en esta experiencia: [descripción].',
-    tags: ['entrevista', 'conductual']
+    tags: ['entrevista', 'conductual'],
+    modelHint: 'Estructurar una respuesta STAR es redacción — el modelo automático es suficiente.'
   },
   {
     id: 'portfolio-1',
@@ -267,7 +286,8 @@ export const prompts: Prompt[] = [
     title: 'Seleccionar proyectos',
     description: 'Elegir mejores proyectos para mostrar',
     prompt: 'Tengo estos proyectos: [lista con breve descripción]. Ayúdame a seleccionar los 3-5 mejores para mi portafolio tech y explica por qué destacan.',
-    tags: ['portafolio', 'curación']
+    tags: ['portafolio', 'curación'],
+    modelHint: 'Es curación y criterio, no código — el modelo automático hace bien esta selección.'
   },
   {
     id: 'portfolio-2',
@@ -275,7 +295,8 @@ export const prompts: Prompt[] = [
     title: 'Descripción de proyecto para portafolio',
     description: 'Escribir descripción atractiva de proyecto',
     prompt: 'Escribe una descripción atractiva para mi portafolio sobre este proyecto: [descripción técnica]. Incluye: problema resuelto, tecnologías usadas, desafíos y aprendizajes clave.',
-    tags: ['portafolio', 'copywriting']
+    tags: ['portafolio', 'copywriting'],
+    modelHint: 'Copywriting puro — el modelo automático te da un buen resultado sin gastar de más.'
   },
   {
     id: 'portfolio-3',
@@ -301,7 +322,8 @@ export const prompts: Prompt[] = [
     title: 'Pull Request description',
     description: 'Crear descripción completa de PR',
     prompt: 'Crea una descripción de Pull Request profesional para estos cambios: [descripción]. Incluye: qué cambió, por qué, cómo testearlo y screenshots si aplica.',
-    tags: ['github', 'pr']
+    tags: ['github', 'pr'],
+    modelHint: 'Redactar una descripción de PR es barato — el modelo automático sobra.'
   },
   {
     id: 'git-3',
@@ -309,7 +331,8 @@ export const prompts: Prompt[] = [
     title: 'Issue template',
     description: 'Reportar bug o feature claramente',
     prompt: 'Ayúdame a crear un issue en GitHub para: [bug/feature]. Usa formato profesional con: descripción, pasos para reproducir, comportamiento esperado vs actual.',
-    tags: ['github', 'issues']
+    tags: ['github', 'issues'],
+    modelHint: 'Formato de issue estándar — el modelo automático es la opción más barata.'
   }
 ]
 
