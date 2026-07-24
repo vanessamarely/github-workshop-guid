@@ -1,7 +1,9 @@
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { CopyButton } from './CopyButton'
 import { Prompt } from '@/lib/types'
+import { Lightbulb } from '@phosphor-icons/react'
 
 interface PromptCardProps {
   prompt: Prompt
@@ -15,7 +17,21 @@ export function PromptCard({ prompt }: PromptCardProps) {
           <h3 className="font-semibold text-lg mb-1">{prompt.title}</h3>
           <p className="text-sm text-muted-foreground">{prompt.description}</p>
         </div>
-        <Badge variant="secondary">{prompt.category}</Badge>
+        <div className="flex items-center gap-2 flex-shrink-0">
+          {prompt.modelHint && (
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-accent/15 text-accent cursor-help">
+                  <Lightbulb size={14} weight="fill" />
+                </span>
+              </TooltipTrigger>
+              <TooltipContent className="max-w-64 text-center">
+                {prompt.modelHint}
+              </TooltipContent>
+            </Tooltip>
+          )}
+          <Badge variant="secondary">{prompt.category}</Badge>
+        </div>
       </div>
       
       <div className="bg-muted p-4 rounded-md mb-4 font-mono text-sm">

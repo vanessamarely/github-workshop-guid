@@ -209,12 +209,21 @@ section {
           <div>
             <h3 className="font-semibold text-lg mb-2">Lo que vas a crear</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Un sitio web personal con diseño minimalista inspirado en GitHub, 100% responsive, 
-              con secciones de presentación, proyectos, habilidades y contacto. 
+              Un sitio web personal con diseño minimalista inspirado en GitHub, 100% responsive,
+              con secciones de presentación, proyectos, habilidades y contacto.
               Al final, estará publicado en una URL tipo: tu-usuario.github.io
             </p>
           </div>
         </div>
+      </Card>
+
+      <Card className="p-4 bg-muted/50 border-dashed">
+        <p className="text-sm text-muted-foreground">
+          💡 <strong>Sobre el modelo:</strong> todo este proyecto es HTML, CSS y JavaScript básico — el modelo
+          automático (o uno base) es más que suficiente en cada paso. No necesitas un modelo premium para
+          ninguno de los prompts de esta actividad, así que puedes completarla entera con el plan gratuito
+          de Copilot sin preocuparte por el consumo de créditos.
+        </p>
       </Card>
 
       <div className="space-y-4">

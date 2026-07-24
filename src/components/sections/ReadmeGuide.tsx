@@ -3,7 +3,7 @@ import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { StepCard } from '../StepCard'
 import { CopyButton } from '../CopyButton'
-import { Sparkle } from '@phosphor-icons/react'
+import { Sparkle, GithubLogo, Star, ArrowSquareOut } from '@phosphor-icons/react'
 
 export function ReadmeGuide() {
   const [selectedTemplate, setSelectedTemplate] = useState(0)
@@ -168,6 +168,44 @@ const yo = {
               Es un repositorio especial que aparece en la parte superior de tu perfil de GitHub. 
               Se crea haciendo un repo con el mismo nombre que tu usuario. Por ejemplo, si tu usuario es "maria-garcia", 
               creas un repositorio llamado "maria-garcia" con un archivo README.md dentro.
+            </p>
+          </div>
+        </div>
+      </Card>
+
+      <Card className="p-6 bg-gradient-to-br from-accent/10 to-primary/10 border-accent/20">
+        <div className="flex gap-3 items-start">
+          <GithubLogo size={28} weight="duotone" className="text-accent flex-shrink-0" />
+          <div>
+            <h3 className="font-semibold text-lg mb-2">🎨 Atajo: generá tu README visualmente</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+              Si prefieres no escribir el markdown a mano,{' '}
+              <a href="https://github.com/vanessamarely/profile-generator" target="_blank" rel="noopener noreferrer" className="text-primary font-medium underline underline-offset-2">
+                Profile Generator
+              </a>{' '}
+              es un proyecto open source (mío) que arma todo esto con una interfaz de arrastrar y soltar: agregás
+              secciones (bio, skills, GitHub stats con temas, badges de shields.io, redes sociales, trophies,
+              heatmap de contribuciones), ves la vista previa en tiempo real, y exportás el markdown listo para
+              pegar en tu repo de perfil. Cubre secciones que la plantilla manual de aquí no trae — podés usarlo
+              para armar la base rápido, y volver a esta guía para pulir la bio y el storytelling con los prompts
+              de Copilot del Paso 3.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              <Button asChild size="sm">
+                <a href="https://profile-generator-umber.vercel.app" target="_blank" rel="noopener noreferrer">
+                  Probar Profile Generator <ArrowSquareOut size={14} className="ml-1" />
+                </a>
+              </Button>
+              <Button asChild variant="outline" size="sm">
+                <a href="https://github.com/vanessamarely/profile-generator" target="_blank" rel="noopener noreferrer">
+                  <Star size={14} weight="fill" className="mr-1" /> Ver repo y dejar un Star
+                </a>
+              </Button>
+            </div>
+            <p className="text-xs text-muted-foreground mt-3">
+              Es un proyecto open source hecho por mí — si te sirvió, dale <strong>Star</strong> al repo.
+              No cuesta nada, pero sí ayuda: hace que el proyecto sea más fácil de encontrar y le muestra a
+              otras personas que el contenido realmente funciona.
             </p>
           </div>
         </div>

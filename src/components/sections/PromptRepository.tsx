@@ -32,8 +32,13 @@ export function PromptRepository() {
       <div>
         <h1 className="text-4xl font-bold mb-4">Repositorio de Prompts</h1>
         <p className="text-xl text-muted-foreground leading-relaxed">
-          Más de 35 prompts listos para copiar y usar con GitHub Copilot.
-          Copia, pega en Copilot Chat y personaliza según tus necesidades.
+          Más de 35 prompts listos para copiar y usar con GitHub Copilot, para distintos escenarios de
+          programación — aprender, crear, revisar, testear, documentar y más. Úsalos también para probar
+          cómo responden distintos modelos ante el mismo prompt.
+        </p>
+        <p className="text-sm text-muted-foreground mt-2 flex items-center gap-1.5">
+          <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-accent/15 text-accent">💡</span>
+          Donde veas este ícono, hay una recomendación de qué modelo conviene usar para no gastar créditos de más — pasa el mouse encima para verla.
         </p>
       </div>
 

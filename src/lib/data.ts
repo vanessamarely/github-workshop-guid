@@ -7,7 +7,8 @@ export const prompts: Prompt[] = [
     title: 'Explicar un concepto desde cero',
     description: 'Para entender cualquier tecnología o concepto nuevo',
     prompt: 'Explícame [concepto/tecnología] como si nunca hubiera programado antes. Usa analogías simples y ejemplos del mundo real.',
-    tags: ['principiante', 'conceptos']
+    tags: ['principiante', 'conceptos'],
+    modelHint: 'El modelo automático (o uno base) alcanza de sobra para explicaciones — no gastes créditos premium aquí.'
   },
   {
     id: 'learn-2',
@@ -31,7 +32,8 @@ export const prompts: Prompt[] = [
     title: 'Roadmap personalizado',
     description: 'Crear plan de aprendizaje estructurado',
     prompt: 'Crea un roadmap de 3 meses para aprender [tecnología/stack] desde cero. Incluye recursos gratuitos, proyectos incrementales y hitos claros.',
-    tags: ['roadmap', 'planificación']
+    tags: ['roadmap', 'planificación'],
+    modelHint: 'Tarea de planificación/redacción — el modelo automático es suficiente, no necesitas uno premium.'
   },
   {
     id: 'create-1',
@@ -55,7 +57,8 @@ export const prompts: Prompt[] = [
     title: 'API REST endpoint',
     description: 'Generar endpoint con buenas prácticas',
     prompt: 'Crea un endpoint REST para [operación]. Incluye validación de datos, manejo de errores HTTP apropiados y ejemplos de uso.',
-    tags: ['api', 'backend']
+    tags: ['api', 'backend'],
+    modelHint: 'Para un CRUD estándar, el modelo automático rinde bien. Solo sube a uno premium si la lógica de negocio es compleja.'
   },
   {
     id: 'create-4',
@@ -79,7 +82,8 @@ export const prompts: Prompt[] = [
     title: 'Identificar problemas',
     description: 'Encontrar bugs o malas prácticas',
     prompt: 'Analiza este código y identifica: 1) posibles bugs, 2) problemas de rendimiento, 3) mejoras de legibilidad: [pegar código]',
-    tags: ['debugging', 'análisis']
+    tags: ['debugging', 'análisis'],
+    modelHint: 'Un modelo premium suele encontrar más en un solo pase — vale la pena aquí, en vez de iterar varias veces con uno básico.'
   },
   {
     id: 'understand-3',
@@ -95,7 +99,8 @@ export const prompts: Prompt[] = [
     title: 'Refactorizar para legibilidad',
     description: 'Hacer código más limpio y mantenible',
     prompt: 'Refactoriza este código para mejorar legibilidad y mantenibilidad. Aplica principios SOLID y mejores prácticas: [pegar código]',
-    tags: ['refactor', 'clean-code']
+    tags: ['refactor', 'clean-code'],
+    modelHint: 'Refactors con principios de diseño se benefician de un modelo premium — mejor razonamiento sobre trade-offs.'
   },
   {
     id: 'improve-2',
@@ -103,7 +108,8 @@ export const prompts: Prompt[] = [
     title: 'Optimizar rendimiento',
     description: 'Mejorar velocidad y eficiencia',
     prompt: 'Optimiza este código para mejor rendimiento. Explica qué cambios haces y por qué mejoran la eficiencia: [pegar código]',
-    tags: ['optimización', 'rendimiento']
+    tags: ['optimización', 'rendimiento'],
+    modelHint: 'La optimización pide buen razonamiento — usa un modelo premium, sobre todo si el código ya es complejo.'
   },
   {
     id: 'improve-3',
@@ -127,7 +133,8 @@ export const prompts: Prompt[] = [
     title: 'Tests unitarios',
     description: 'Generar suite de tests completa',
     prompt: 'Crea tests unitarios completos para esta función/componente usando [framework de testing]. Incluye casos felices, edge cases y manejo de errores: [pegar código]',
-    tags: ['unit-test', 'testing']
+    tags: ['unit-test', 'testing'],
+    modelHint: 'Generar tests estándar no necesita un modelo premium — el automático cubre bien esto.'
   },
   {
     id: 'test-2',
@@ -143,7 +150,8 @@ export const prompts: Prompt[] = [
     title: 'Encontrar bug',
     description: 'Identificar causa de un error',
     prompt: 'Este código genera el error: [mensaje de error]. Identifica la causa raíz y sugiere una solución: [pegar código]',
-    tags: ['bug', 'error']
+    tags: ['bug', 'error'],
+    modelHint: 'Empieza con el automático. Si el bug es difícil de rastrear y ya llevas 2-3 intentos, cambia a uno premium — sale más barato que seguir iterando.'
   },
   {
     id: 'debug-2',
@@ -167,7 +175,8 @@ export const prompts: Prompt[] = [
     title: 'Arquitectura de proyecto',
     description: 'Diseñar estructura de un proyecto',
     prompt: 'Diseña la arquitectura completa para un proyecto de [descripción]. Incluye: estructura de carpetas, tecnologías recomendadas, componentes principales y flujo de datos.',
-    tags: ['arquitectura', 'diseño']
+    tags: ['arquitectura', 'diseño'],
+    modelHint: 'Decisiones de arquitectura se benefician de un modelo premium — es un gasto puntual que evita rehacer el proyecto después.'
   },
   {
     id: 'project-3',
@@ -183,7 +192,8 @@ export const prompts: Prompt[] = [
     title: 'README de proyecto',
     description: 'Crear README profesional para repositorio',
     prompt: 'Crea un README profesional para mi proyecto: [descripción del proyecto]. Incluye: descripción, tecnologías, instalación, uso, screenshots, contribución y licencia.',
-    tags: ['readme', 'documentación']
+    tags: ['readme', 'documentación'],
+    modelHint: 'Redacción y formato — el modelo automático es la opción más barata y funciona bien.'
   },
   {
     id: 'readme-2',
@@ -191,7 +201,8 @@ export const prompts: Prompt[] = [
     title: 'README de perfil GitHub',
     description: 'Generar README personal atractivo',
     prompt: 'Crea un README para mi perfil de GitHub. Soy [descripción profesional], busco [tipo de oportunidad], y mis skills son [lista]. Hazlo visual con badges, stats y call-to-action.',
-    tags: ['perfil', 'personal-branding']
+    tags: ['perfil', 'personal-branding'],
+    modelHint: 'Es texto y formato, no lógica — el modelo automático te da un resultado igual de bueno gastando menos.'
   },
   {
     id: 'readme-3',
@@ -207,7 +218,8 @@ export const prompts: Prompt[] = [
     title: 'Descripción de proyecto para CV',
     description: 'Transformar proyecto técnico en bullet point profesional',
     prompt: 'Tengo este proyecto: [descripción técnica]. Escribe 2-3 bullet points profesionales para mi CV destacando impacto, tecnologías y resultados medibles.',
-    tags: ['cv', 'carrera']
+    tags: ['cv', 'carrera'],
+    modelHint: 'Tarea de copywriting — el modelo automático es suficiente, guarda los créditos premium para código.'
   },
   {
     id: 'cv-2',
@@ -271,7 +283,8 @@ export const prompts: Prompt[] = [
     title: 'Bio profesional',
     description: 'Crear biografía profesional impactante',
     prompt: 'Escribe una bio profesional para mi portafolio web. Background: [tu historia], Skills: [tus skills], Buscando: [tipo de oportunidad]. Tono: profesional pero cercano.',
-    tags: ['portafolio', 'bio']
+    tags: ['portafolio', 'bio'],
+    modelHint: 'Redacción de bio — usa el modelo automático, no necesitas gastar más créditos en esto.'
   },
   {
     id: 'git-1',
@@ -279,7 +292,8 @@ export const prompts: Prompt[] = [
     title: 'Mensajes de commit',
     description: 'Escribir commits descriptivos',
     prompt: 'Ayúdame a escribir mensajes de commit siguiendo conventional commits para estos cambios: [descripción de cambios]. Usa formato: tipo(scope): descripción.',
-    tags: ['git', 'commits']
+    tags: ['git', 'commits'],
+    modelHint: 'Esto es lo más barato que le puedes pedir a Copilot — el modelo automático sobra.'
   },
   {
     id: 'git-2',

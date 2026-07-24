@@ -18,6 +18,8 @@ export interface Prompt {
   description: string
   prompt: string
   tags?: string[]
+  /** Recomendación de qué modelo conviene usar aquí — se muestra en un hint al pasar el mouse */
+  modelHint?: string
 }
 
 export interface CopilotPlan {
