@@ -65,6 +65,36 @@ export const slides: Slide[] = [
     ],
   },
   {
+    id: 'repo',
+    topic: 'Repositorio',
+    title: 'Encuentra el proyecto en GitHub',
+    bullets: [
+      'github.com/vanessamarely/github-workshop-guid',
+      'Todo el código de esta guía y de este deck, open source',
+      '¿Te gustó el proyecto? Dale clic en Star ⭐',
+    ],
+    notes:
+      'Todo lo que ves en esta charla —la guía interactiva y este mismo slide deck— vive en un único repositorio open source: github.com/vanessamarely/github-workshop-guid. Puedes clonarlo, revisar el código, o volver acá cuando quieras repasar un concepto. Si el proyecto te sirvió, dale clic en Star — ayuda a que más gente lo encuentre.',
+    sceneAccent: 'intro',
+    image: '/images/talk/repo-qr.png',
+    links: [{ label: 'Abrir repositorio', url: 'https://github.com/vanessamarely/github-workshop-guid' }],
+  },
+  {
+    id: 'guide',
+    topic: 'Guía interactiva',
+    title: 'La guía, siempre disponible',
+    bullets: [
+      'github-workshop-guid.vercel.app',
+      'El mismo contenido de este deck, en formato de lectura',
+      'Ejercicios paso a paso para github.com, VS Code, CLI y la Copilot App',
+    ],
+    notes:
+      'Esta charla también vive como guía de lectura, desplegada en github-workshop-guid.vercel.app — con cada punto del deck explicado en prosa completa, más los ejercicios prácticos para llevarlo a tu propio proyecto. Escanea el código o guarda el link para volver después.',
+    sceneAccent: 'intro',
+    image: '/images/talk/guide-qr.png',
+    links: [{ label: 'Abrir guía', url: 'https://github-workshop-guid.vercel.app/' }],
+  },
+  {
     id: 'harness-1',
     topic: 'El harness',
     title: 'No le hablas al modelo. Le hablas al harness.',
