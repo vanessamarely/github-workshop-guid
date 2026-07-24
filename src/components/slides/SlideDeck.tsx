@@ -76,10 +76,13 @@ export function SlideDeck({ onExit }: SlideDeckProps) {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-[20px] text-[#7c3aed] font-medium border border-[#7c3aed]/30 rounded-full px-4 py-1.5 hover:bg-[#7c3aed]/10 transition-colors"
+              className="inline-flex flex-col items-start text-[20px] text-[#7c3aed] font-medium border border-[#7c3aed]/30 rounded-2xl px-4 py-2 hover:bg-[#7c3aed]/10 transition-colors"
             >
-              {link.label}
-              <ArrowSquareOut size={16} />
+              <span className="inline-flex items-center gap-1.5 font-semibold">
+                {link.label}
+                <ArrowSquareOut size={16} className="flex-shrink-0" />
+              </span>
+              {link.handle && <span className="text-[#7c3aed]/70 font-normal">{link.handle}</span>}
             </a>
           ))}
         </div>
@@ -93,15 +96,17 @@ export function SlideDeck({ onExit }: SlideDeckProps) {
         {hasVisual ? (
           // Dos columnas fijas: texto a la izquierda, imagen contenida a la
           // derecha — nunca la imagen cubriendo todo el frame como fondo.
-          <div className="relative z-10 h-full flex items-center justify-between gap-10 pt-[6%] pb-[16%] px-[6%]">
-            <div className="w-[52%] max-h-full overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">{textPanel}</div>
+          <div className="relative z-10 h-full flex items-stretch justify-between gap-10 pt-[6%] pb-[12%] px-[6%]">
+            <div className="w-[52%] max-h-full overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden flex flex-col justify-center">{textPanel}</div>
             <div className="w-[38%] flex-shrink-0 flex items-center justify-center">
               {slide.photo ? (
-                <img
-                  src={slide.photo}
-                  alt={slide.title}
-                  className="w-56 h-56 rounded-full object-cover border-4 border-white shadow-2xl"
-                />
+                <div className="aspect-square h-full max-w-full">
+                  <img
+                    src={slide.photo}
+                    alt={slide.title}
+                    className="w-full h-full rounded-full object-cover border-4 border-white shadow-2xl"
+                  />
+                </div>
               ) : slide.image ? (
                 <img
                   src={slide.image}

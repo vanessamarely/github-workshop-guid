@@ -44,18 +44,19 @@ function createIconTexture(kind: IconKind): THREE.CanvasTexture {
   ctx.lineJoin = 'round'
 
   if (kind === 'think') {
-    // Foco: rayos de idea + bombilla + base.
+    // Foco: rayos de idea + bombilla + base. Desplazado +39 en y para que
+    // el conjunto (rayos a base) quede centrado verticalmente en el canvas.
     ctx.lineWidth = 9
-    ;[[128, 26, 128, 4], [88, 40, 72, 20], [168, 40, 184, 20]].forEach(([x1, y1, x2, y2]) => {
+    ;[[128, 65, 128, 43], [88, 79, 72, 59], [168, 79, 184, 59]].forEach(([x1, y1, x2, y2]) => {
       ctx.beginPath()
       ctx.moveTo(x1, y1)
       ctx.lineTo(x2, y2)
       ctx.stroke()
     })
     ctx.beginPath()
-    ctx.arc(128, 100, 56, 0, Math.PI * 2)
+    ctx.arc(128, 139, 56, 0, Math.PI * 2)
     ctx.fill()
-    ctx.fillRect(104, 148, 48, 26)
+    ctx.fillRect(104, 187, 48, 26)
   } else if (kind === 'act') {
     // Rayo: ejecución, algo pasa.
     ctx.beginPath()

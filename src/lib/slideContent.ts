@@ -12,7 +12,16 @@ export type SceneAccent =
 export interface SlideLink {
   label: string
   url: string
+  /** Usuario/handle visible en el pill — no todos van a hacer clic, así que
+   * se puede leer y anotar aunque no se toque el link. */
+  handle?: string
 }
+
+/** Redes de contacto — una sola fuente para el slide de perfil y el de cierre. */
+export const SOCIAL_LINKS: SlideLink[] = [
+  { label: 'LinkedIn', url: 'https://www.linkedin.com/in/vanessa-marely-aristizabal-angel', handle: 'vanessa-marely-aristizabal-angel' },
+  { label: 'Instagram', url: 'https://www.instagram.com/vanessamarelycode/', handle: '@vanessamarelycode' },
+]
 
 export interface Slide {
   id: string
@@ -61,10 +70,7 @@ export const slides: Slide[] = [
       'Magíster en Ingeniería, con especialización en Desarrollo de Software. Google Developer Expert en Angular y Tecnologías Web, y GitHub Star. Creadora de contenido tech. Apasionada por el código, los libros, la ilustración y el journaling.',
     sceneAccent: 'intro',
     photo: '/images/talk/profile.jpg',
-    links: [
-      { label: 'LinkedIn', url: 'https://www.linkedin.com/in/vanessa-marely-aristizabal-angel' },
-      { label: 'Instagram', url: 'https://www.instagram.com/vanessamarelycode/' },
-    ],
+    links: SOCIAL_LINKS,
   },
   {
     id: 'repo',
@@ -300,5 +306,6 @@ export const slides: Slide[] = [
       'Tres ideas para llevarte: primero, Copilot no es un modelo, es un modelo dentro de un harness — y el contexto que ese harness recibe determina la calidad de cada respuesta, más que cualquier otro factor. Segundo, elegir bien el modelo, la superficie y cuánto contexto le das es la diferencia entre usar Copilot barato y bien, o caro y mal. Tercero, el ciclo de vida de desarrollo con agentes no te saca del proceso — cambia dónde aplicas tu criterio: de ejecutar cada paso, a escribir buenas specs y revisar buenos resultados.',
     sceneAccent: 'closing',
     image: '/images/talk/closing.jpg',
+    links: SOCIAL_LINKS,
   },
 ]

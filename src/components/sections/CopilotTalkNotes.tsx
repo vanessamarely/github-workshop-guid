@@ -69,8 +69,9 @@ export function CopilotTalkNotes() {
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 text-sm text-primary font-medium border border-primary/30 rounded-full px-3 py-1 hover:bg-primary/10 transition-colors"
                       >
-                        {link.label}
-                        <ArrowSquareOut size={14} />
+                        <span className="font-semibold">{link.label}</span>
+                        {link.handle && <span className="text-primary/70 font-normal">{link.handle}</span>}
+                        <ArrowSquareOut size={14} className="flex-shrink-0" />
                       </a>
                     ))}
                   </div>
