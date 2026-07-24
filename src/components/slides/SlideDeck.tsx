@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button'
 import { ArrowLeft, ArrowRight, ArrowSquareOut, X } from '@phosphor-icons/react'
 import { slides } from '@/lib/slideContent'
 import { SlideCanvas } from './SlideCanvas'
+import { ThinkActObserveDiagram } from './ThinkActObserveDiagram'
 
 interface SlideDeckProps {
   onExit: () => void
@@ -45,7 +46,7 @@ export function SlideDeck({ onExit }: SlideDeckProps) {
     return () => window.removeEventListener('keydown', handleKey)
   }, [goNext, goPrev, onExit])
 
-  const hasVisual = Boolean(slide.image || slide.photo)
+  const hasVisual = Boolean(slide.image || slide.photo || slide.diagram)
 
   const textPanel = (
     <div
@@ -101,13 +102,17 @@ export function SlideDeck({ onExit }: SlideDeckProps) {
                   alt={slide.title}
                   className="w-56 h-56 rounded-full object-cover border-4 border-white shadow-2xl"
                 />
-              ) : (
+              ) : slide.image ? (
                 <img
                   src={slide.image}
                   alt={slide.title}
                   className="w-full rounded-2xl border-4 border-white shadow-2xl object-cover"
                 />
-              )}
+              ) : slide.diagram === 'think-act-observe' ? (
+                <div className="relative w-full aspect-square rounded-2xl border-4 border-white shadow-2xl bg-[#fcfbff] overflow-hidden">
+                  <ThinkActObserveDiagram />
+                </div>
+              ) : null}
             </div>
           </div>
         ) : (

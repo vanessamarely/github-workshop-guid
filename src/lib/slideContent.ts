@@ -29,6 +29,8 @@ export interface Slide {
   photo?: string
   /** Links sociales (usado en el slide de perfil) */
   links?: SlideLink[]
+  /** Diagrama Three.js hecho a medida para este slide — vive en el panel derecho, contenido */
+  diagram?: 'think-act-observe'
 }
 
 export const slides: Slide[] = [
@@ -120,6 +122,7 @@ export const slides: Slide[] = [
     notes:
       'Este ciclo se repite en cada interacción, y es la razón por la que Copilot puede iterar solo en Agent Mode: piensa, actúa, observa el resultado (¿el build pasó? ¿hay un error?), y si algo falló, vuelve a pensar con esa nueva información. La calidad de la respuesta depende tanto del modelo como de qué tan buen contexto arma el harness — un prompt vago da una respuesta genérica porque el harness no tiene con qué trabajar, no porque el modelo "piense peor".',
     sceneAccent: 'harness',
+    diagram: 'think-act-observe',
   },
   {
     id: 'architecture-1',
